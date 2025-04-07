@@ -1,0 +1,374 @@
+:root {
+    --bright-green: #00AC66;
+    --default-text-color: #292929;
+    --light-text-color: #A6A6A6;
+    --main-darker-background: #F5F3EF;
+    --main-lighter-background: #FAF9F7;
+
+    --playfair-font: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --inter-font: Inter, Helvetica, Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--default-text-color);
+    font-family: var(--inter-font);
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    background-color: var(--main-darker-background);
+}
+
+header a {
+    text-decoration: none;
+    color: var(--default-text-color);
+    font-weight: 400;
+}
+
+header a:hover {
+    font-weight: 600;
+}
+
+#home-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 150px;
+    margin-right: 78px;
+    gap: 15px;
+}
+
+#logo-img {
+    display: flex;
+    background-color: var(--bright-green);
+    height: 51px;
+    width: 51px;
+    border-radius: 8.5px;
+    align-items: center;
+    justify-content: center;
+}
+
+#logo-img sub, #logo-img sup {
+    font-family: var(--playfair-font);
+    color: white;
+    font-size: 23px;
+    font-weight: 900;
+}
+
+#logo-text {
+    font-family: var(--playfair-font);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--bright-green);
+}
+
+#sections {
+    display: flex;
+    gap: 44px;
+
+}
+#user-sections {
+    display: flex;
+    gap: 58px;
+    margin-right: 150px;
+}
+
+#mailbox {
+    display: flex;
+    align-items: center;
+}
+
+#mailbox a {
+    margin: 0px 2.5px 0px 4px;
+}
+
+#mailbox-notif {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10.5px;
+    height: 15px;
+    border-radius: 6.75px;
+    font-size: 8.25px;
+    color: var(--main-darker-background);
+    background-color: var(--default-text-color);
+}
+
+/* home page */
+
+p {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: 400;
+    font-family: var(--playfair-font);
+}
+
+.light-section {
+    background-color: var(--main-lighter-background);
+}
+
+.dark-section {
+    background-color: var(--main-darker-background);
+}
+.green-cta-btn {
+    width: 152px;
+    height: 53px;
+    background-color: var(--bright-green);
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+
+.transparent-cta-btn {
+    background-color: transparent;
+    border: 1px solid var(--bright-green);
+    border-radius: 10px;
+    color: var(--bright-green);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* hero section */
+
+#hero {
+    padding-top: 80px;
+    padding-bottom: 128px;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+#hero-description {
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero-description h1 {
+    font-family: var(--playfair-font);
+    font-size: 36px;
+    font-weight: 400;
+}
+
+#hero-description p {
+    padding-top: 16px;
+    padding-bottom: 40px;
+}
+
+
+#hero-img {
+    width: 404px;
+    height: 539;
+}
+
+#hero-img img {
+    width: 100%;
+    height: 100%;
+}
+
+#hero-img p {
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--light-text-color);
+    text-align: right;
+}
+
+/* last books sections */
+
+#last-books {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--main-lighter-background);
+}
+
+#last-books h2 {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+#book-list {
+    display: flex;
+    gap: 38px;
+    margin-bottom: 48px;
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-card-img {
+    width: 200px;
+    height: 200px;
+}
+
+.book-card-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.book-card-description {
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 23px;
+    padding-left: 14px;
+}
+
+.book-card-title {
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.book-card-author {
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 22px;
+    color: var(--light-text-color)
+}
+
+.book-card-owner {
+    font-weight: 400;
+    font-size: 10px;
+    font-style: italic;
+    color: var(--light-text-color)
+}
+
+#last-books button {
+    margin-bottom: 64px;
+}
+
+/* steps section */
+
+#steps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#steps h2 {
+    margin-top: 80px;
+}
+
+#steps p {
+    margin-top: 24px;
+}
+
+#step-list {
+    display: flex;
+    gap: 36px;
+    margin-top: 40px;
+}
+
+.step-card {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 215px;
+    height: 139px;
+    background-color: white;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 10px;
+    padding: 44px 18px 44px 18px;
+}
+
+#steps .transparent-cta-btn {
+    margin-top: 48px;
+    width: 218px;
+    height: 63px;
+    margin-bottom: 80px;
+}
+
+#banner {
+    width: 100%;
+    height: 230px;
+    background-image: url('/data/images/woman-in-books.jpg');
+    background-size: cover;
+    background-position: 50% 40%;
+}
+
+/* our values section */
+
+#our-values {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#our-values h2 {
+    padding-left: 542px;
+    padding-right: 506px;
+    margin-top: 80px;
+    margin-bottom: 29px;
+}
+
+.letter {
+    padding-left: 542px;
+    padding-right: 506px;
+    margin-bottom: 15px;
+}
+
+#signature {
+    display: flex;
+    flex-direction: row;
+    gap: 239px;
+}
+
+#signature-text {
+    padding-top: 14px;
+    padding-left: 542px;
+}
+
+#signature-img {
+    width: 120px;
+    height: 102px;
+}
+
+/* footer */
+
+footer {
+    height: 60px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 40px;
+}
+
+.footer-link {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.footer-link:hover {
+    font-weight: 600;
+}
+
+#footer-logo {
+    margin-right: 46px;
+}
+
+#footer-logo sub, #footer-logo sup {
+    color: var(--bright-green);
+    font-size: 18px;
+    font-family: var(--playfair-font);
+    font-weight: 900;
+    letter-spacing: 0px;
+}
