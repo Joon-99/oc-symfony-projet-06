@@ -27,32 +27,6 @@
             $fileManager = new FileManager();
             $books = $bookManager->findAll();
 
-            // $books = [
-            //     [
-            //         'title' => 'Esther',
-            //         'author' => 'Alabaster',
-            //         'owner' => 'CamilleClubLit',
-            //         'img' => 'esther.jpg',
-            //     ],
-            //     [
-            //         'title' => 'The Kinfolk Table',
-            //         'author' => 'Nathan Williams',
-            //         'owner' => 'Nathalire',
-            //         'img' => 'the-kinfolk-table.jpg',
-            //     ],
-            //     [
-            //         'title' => 'Wabi Sabi',
-            //         'author' => 'Beth Kempton',
-            //         'owner' => 'Alexlecture',
-            //         'img' => 'wabi-sabi.jpg',
-            //     ],
-            //     [
-            //         'title' => 'Milk & honey',
-            //         'author' => 'Rupi Kaur',
-            //         'owner' => 'Hugo1990_12',
-            //         'img' => 'milk-honey.jpg',
-            //     ],
-            // ];
             foreach ($books as $book) {
                 $title = $book->getTitle();
                 $author = $authorManager->findById($book->getAuthorId())->getFullName();

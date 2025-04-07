@@ -1,6 +1,7 @@
 <?php
 require_once 'config/autoload.php';
 require_once 'config/config.php';
+FlashService::init();
 
 try {
     $route = isset($_REQUEST['route']) ? $_REQUEST['route'] : 'home';
@@ -23,9 +24,9 @@ try {
             require_once 'src/view/main.php';
             break;
         default:
-            echo "Route $route does not exist";
-            break;
+            throw new Exception("Route $route does not exist");
     }
 } catch (Exception $e) {
-    echo "Error encountered: {$e->getMessage()}";
+    $errorMsg = "Error encountered: {$e->getMessage()}";
+    RenderService::renderView('error', ['errorMsg' => $errorMsg]);
 }

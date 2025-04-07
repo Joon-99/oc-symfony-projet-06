@@ -7,15 +7,19 @@
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="src/css/main.css">
+        <script src="https://kit.fontawesome.com/acad47febf.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <header>
             <?php
-                // $headerHtml = '<div style="height: 30px; width: 100%; background-color: crimson"></div>';
-                // echo $headerHtml;
                 require_once 'header.php';
             ?>
         </header>
+        <div id="flash-section">
+            <?php
+                require_once 'flash.php';
+            ?>
+        </div>
         <main>
             <?= $pageContent ?>
         </main>

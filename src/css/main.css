@@ -5,6 +5,13 @@
     --main-darker-background: #F5F3EF;
     --main-lighter-background: #FAF9F7;
 
+    --success-color: #00AC66;
+    --success-bg: #E6F7F0;
+    --warning-color: #E6A817;
+    --warning-bg: #FDF7E8;
+    --error-color: #D64045;
+    --error-bg: #FCEBEC;
+
     --playfair-font: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --inter-font: Inter, Helvetica, Arial, sans-serif;
 }
@@ -371,4 +378,44 @@ footer {
     font-family: var(--playfair-font);
     font-weight: 900;
     letter-spacing: 0px;
+}
+
+/* error handling */
+
+.flash-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.error-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--error-color);
+    background-color: var(--error-bg);
+    margin: 50px auto;
+}
+
+.error {
+    color: var(--error-color);
+    background-color: var(--error-bg);
+}
+
+.warning {
+    color: var(--warning-color);
+    background-color: var(--warning-bg);
+}
+
+.success {
+    color: var(--success-color);
+    background-color: var(--success-bg);
 }
