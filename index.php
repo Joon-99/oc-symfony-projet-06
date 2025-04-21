@@ -19,9 +19,25 @@ try {
             $controller = new MainController();
             $controller->homePage();
             break;
-        case 'about':
-            require_once 'src/view/about.php';
-            require_once 'src/view/main.php';
+        case 'books':
+            $controller = new MainController();
+            $controller->booksAvailable();
+            break;
+        case 'search-book':
+            $searchText = isset($_GET['search-book']) ? $_GET['search-book'] : null;
+            $controller = new MainController();
+            $controller->booksAvailable($searchText);   
+            break;
+        case 'book-details':
+            $controller = new MainController();
+            $bookId = isset($_GET['id']) ? $_GET['id'] : null;
+            if (!$bookId) {
+                throw new Exception("You need a book id to access this route.");
+            }
+            $controller->bookDetails($bookId);
+        case 'sign-up':
+            $controller = new MainController();
+            $controller->signInPage();
             break;
         default:
             throw new Exception("Route $route does not exist");

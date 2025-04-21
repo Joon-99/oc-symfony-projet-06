@@ -18,7 +18,7 @@
 </section>
 <section id="last-books" class="light-section">
     <h2>Les derniers livres ajoutés</h2>
-    <div id="book-list">
+    <div class="book-list">
         <?php
             //TODO check le probleme d'alignement du paragraphe des valeurs
             $bookManager = new BookManager();
@@ -32,11 +32,12 @@
                 $author = $authorManager->findById($book->getAuthorId())->getFullName();
                 $owner = $userManager->findById($book->getOwnerId())->getUsername();
                 $img = $fileManager->findById($book->getCoverImgId())->getFilePath();
-                require 'book-detail.php';
+                $id = $book->getId();
+                require 'book-card.php';
             }
         ?>
     </div>
-    <button class="green-cta-btn">Voir tous les livres</button>
+    <button class="green-cta-btn"><a href="index.php?route=books">Voir tous les livres</a></button>
 </section>
 <section id="steps" class="dark-section">
     <h2>Comment ça marche ?</h2>

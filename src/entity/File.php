@@ -7,18 +7,18 @@ class File extends BaseEntity
      * - user profile images
      * - book covers
      */
-    private int $userId; // References a User
+    private ?int $userId; // References a User
     private string $title;
     private string $mimeType;
     private string $url;
     private string $filePath;
 
-    public function getUserId(): int
+    public function getUserId(): ?int
     {
         return $this->userId;
     }
 
-    public function setUserId(int $userId): void
+    public function setUserId(?int $userId): void
     {
         $this->userId = $userId;
     }

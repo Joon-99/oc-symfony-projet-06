@@ -15,11 +15,13 @@
                 require_once 'header.php';
             ?>
         </header>
-        <div id="flash-section">
-            <?php
+        <?php
+            if (FlashService::hasMessages()) {
+                echo '<div id="flash-section">';
                 require_once 'flash.php';
-            ?>
-        </div>
+                echo '</div>';
+            }
+        ?>
         <main>
             <?= $pageContent ?>
         </main>

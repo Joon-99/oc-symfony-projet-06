@@ -17,7 +17,6 @@ abstract class BaseEntity
     {
         foreach ($data as $key => $value) {
             $method = 'set' . str_replace('_', '', ucwords($key, '_'));
-            // var_dump($key);
             if (method_exists($this, $method)) {
                 $this->$method($value);
             }

@@ -10,6 +10,9 @@ class Book extends BaseEntity
     private ?string $description;
     private int $coverImgId; // References a File
     private bool $available;
+    private ?Author $author = null; // References an Author
+    private ?File $coverImg = null; // References a File
+    private ?User $owner = null; // References a User
 
     public function getOwnerId(): int
     {
@@ -69,6 +72,30 @@ class Book extends BaseEntity
     public function setAvailable(bool $available): void
     {
         $this->available = $available;
+    }
+    public function getAuthor(): ?Author
+    {
+        return $this->author;
+    }
+    public function setAuthor(?Author $author): void
+    {
+        $this->author = $author;
+    }
+    public function getCoverImg(): ?File
+    {
+        return $this->coverImg;
+    }
+    public function setCoverImg(?File $coverImg): void
+    {
+        $this->coverImg = $coverImg;
+    }
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+    public function setOwner(?User $owner): void
+    {
+        $this->owner = $owner;
     }
 
 }

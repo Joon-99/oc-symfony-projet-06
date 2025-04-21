@@ -8,7 +8,7 @@
 </a>
 <div id="sections">
     <a href="index.php?route=home">Accueil</a>
-    <a href="#">Nos livres à l'échange</a>
+    <a href="index.php?route=books">Nos livres à l'échange</a>
 </div>
 <div id="user-sections">
     <div id="mailbox">

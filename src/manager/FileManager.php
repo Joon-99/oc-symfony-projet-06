@@ -1,7 +1,7 @@
 <?php
 class FileManager
 {
-    public function findById(int $id): ?File
+    public function findById(?int $id): ?File
     {
         $sql = <<<SQL
             SELECT *

@@ -5,6 +5,8 @@
     --main-darker-background: #F5F3EF;
     --main-lighter-background: #FAF9F7;
 
+    --search-bar-decoration: #f0f0f0;
+
     --success-color: #00AC66;
     --success-bg: #E6F7F0;
     --warning-color: #E6A817;
@@ -22,6 +24,10 @@
     box-sizing: border-box;
     color: var(--default-text-color);
     font-family: var(--inter-font);
+}
+
+a {
+    text-decoration: none;
 }
 
 /* HEADER */
@@ -116,6 +122,13 @@ p {
     font-weight: 300;
 }
 
+h1 {
+    font-size: 36px;
+    font-weight: 400;
+    font-family: var(--playfair-font);
+}
+
+
 h2 {
     font-size: 32px;
     font-weight: 400;
@@ -135,6 +148,11 @@ h2 {
     background-color: var(--bright-green);
     border: none;
     border-radius: 10px;
+    color: white;
+}
+
+.green-cta-btn a {
+    text-decoration: none;
     color: white;
 }
 
@@ -209,13 +227,20 @@ h2 {
     margin-bottom: 80px;
 }
 
-#book-list {
+.book-list {
     display: flex;
+    flex-wrap: wrap;;
+    justify-content: space-between;
+    width: 63%;
     gap: 38px;
     margin-bottom: 48px;
+    margin-left: 263px;
+    margin-right: 263px;
 }
 
 .book-card {
+    flex: 0 0 20%;
+    width: 25% - 114px;
     display: flex;
     flex-direction: column;
 }
@@ -231,6 +256,7 @@ h2 {
 }
 
 .book-card-description {
+    width: 200px;
     background-color: white;
     padding-top: 20px;
     padding-bottom: 23px;
@@ -418,4 +444,175 @@ footer {
 .success {
     color: var(--success-color);
     background-color: var(--success-bg);
+}
+
+/* books page */
+
+#books-available {
+    padding-bottom: 80px;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 63%;
+    gap: 10px;
+    padding-top: 130px;
+    margin-bottom: 70px;
+    margin-left: 263px;
+    margin-right: 263px;
+}
+
+#search-book {
+    height: 100%;
+    border-color: var(--search-bar-decoration);
+    background-color: white;
+    border: 1px solid var(--search-bar-decoration);
+    border-radius: 10px;
+}
+
+#search-book::placeholder {
+    padding: 5px;
+    color: var(--search-bar-decoration);
+}
+
+/* book details page */
+
+#book-details {
+    display: flex;
+    flex-direction: column;
+}
+
+#breadcrumb-trail {
+    display: flex;
+    gap: 5px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 150px;
+}
+
+#breadcrumb-trail a, #breadcrumb-trail span {
+    color: var(--light-text-color);
+    font-size: 10px;
+    font-weight: 300;
+    font-family: var(--inter-font);
+}
+
+#details {
+    display: flex;
+}
+
+#book-img {
+    width: 50%;
+}
+
+#book-img img {
+    width: 100%;
+    height: auto;
+}
+
+#book-description {
+    width: 50%;
+    padding-top: 60px;
+    padding-right: 150px;
+    padding-bottom: 80px;
+    padding-left: 85px;
+}
+
+#book-description h1 {
+    margin-bottom: 16px;;
+}
+
+
+#book-author {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: var(--inter-font);
+    color: var(--light-text-color);
+    margin-bottom: 32px;;
+}
+
+hr {
+    margin-bottom: 32px;;
+    width: 27px;
+}
+
+.description-labels {
+    font-size: 8px;
+    font-weight: 600;
+    font-family: var(--inter-font);
+    margin-bottom: 16px;
+}
+
+#book-description-text {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: var(--inter-font);
+    margin-bottom: 32px;
+}
+
+.user-tag {
+    display: flex;
+    align-items: center;;
+    width: 157px;
+    height: 60px;
+    gap: 12px;
+    border-radius: 114px;
+    padding: 6px 17px 6px 6px;
+    background-color: white;
+}
+
+.user-img-tag {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.user-name-tag {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#send-message-btn {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 63px;
+    background-color: var(--bright-green);
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+
+/* sign-up / log-in page */
+
+.vertical-split {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.right-split,
+.left-split {
+    width: 50%;
+}
+
+.right-split form,
+.left-split form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.right-split img,
+.left-split img {
+    width: 100%;
+    height: 100%;
 }
