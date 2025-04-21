@@ -17,7 +17,7 @@
         </header>
         <?php
             if (FlashService::hasMessages()) {
-                echo '<div id="flash-section">';
+                echo '<div id="flash-section" class="dark-section">';
                 require_once 'flash.php';
                 echo '</div>';
             }

@@ -25,10 +25,13 @@ class FlashService {
         }
         return [];
     }
-    public static function addMessage(string $type, string $msg): void {
+    public static function addMessage(string $type, string $msg, string $raw = ''): void {
+        if (!$raw) {
+            $msg = htmlspecialchars($msg);
+        }
         $_SESSION[self::SESSION_KEY][] = [
             'type' => $type,
-            'msg' => htmlspecialchars($msg),
+            'msg' => $msg,
         ];
 
     }

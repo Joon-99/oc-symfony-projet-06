@@ -37,7 +37,15 @@ try {
             $controller->bookDetails($bookId);
         case 'sign-up':
             $controller = new MainController();
-            $controller->signInPage();
+            $controller->signUpPage();
+            break;
+        case 'login':
+            $controller = new MainController();
+            $controller->loginPage();
+            break;
+        case 'logout':
+            $controller = new MainController();
+            $controller->logout();
             break;
         default:
             throw new Exception("Route $route does not exist");

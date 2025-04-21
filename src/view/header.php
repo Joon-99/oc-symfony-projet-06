@@ -17,5 +17,11 @@
         <div id="mailbox-notif">1</div>
     </div>
     <a href="#">Mon compte</a>
-    <a href="#">Connexion</a>
+    <?php
+        if (UserService::userIsLoggedIn()) {
+            echo '<a href="index.php?route=logout">Déconnexion</a>';
+        } else {
+            echo '<a href="index.php?route=login">Connexion</a>';
+        }
+    ?>
 </div>

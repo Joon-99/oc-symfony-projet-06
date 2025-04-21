@@ -1,5 +1,5 @@
 <?php
-$pageTitle = "TomTroc - Inscription";
+$pageTitle = "TomTroc - Connexion";
 ob_start();
 ?>
 <section id="sign-in" class="vertical-split light-section">
@@ -7,18 +7,17 @@ ob_start();
         <div class="left-split-content">
         <?php
             echo Form::renderForm(
-                'Inscription',
+                'Connexion',
                 [
-                    ['type' => 'text', 'name' => 'username', 'label' => 'Pseudo', 'placeholder' => '', 'required' => 'required'],
                     ['type' => 'email', 'name' => 'email', 'label' => 'Adresse email', 'placeholder' => '', 'required' => 'required'],
                     ['type' => 'password', 'name' => 'password', 'label' => 'Mot de passe', 'placeholder' => '', 'required' => 'required'],
                     ['type' => 'submit', 'name' => 'submit', 'label' => 'S\'inscrire', 'placeholder' => '', 'required' => 'required'],
                 ],
-                "index.php?route=sign-up",
-                "S'inscrire",
+                "index.php?route=login",
+                "Se connecter",
             );
         ?>
-            <p class="form-cta">Déjà inscrit ? <a href="index.php?route=login">Connectez-vous</a></p>
+            <p class="form-cta">Pas de compte ? <a href="index.php?route=sign-up">Inscrivez-vous</a></p>
         </div>
     </div>
     <div id="books-img" class="right-split">

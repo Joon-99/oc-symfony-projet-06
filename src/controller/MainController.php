@@ -48,7 +48,73 @@ class MainController {
         ]);
     }
 
-    public function signInPage(): void {
+    public function signUpPage(): void {
+        if (isset($_POST['submit'])) {
+            $userManager = new UserManager();
+            $userLogin = $_POST['username'];
+            $userEmail = $_POST['email'];
+            $userPassword = $_POST['password'];
+            $isValidUserData = FormService::checkUserSignUpData([
+                'username' => $userLogin,
+                'email' => $userEmail,
+                'password' => $userPassword,
+            ]);
+            $user = $userManager->findByUsername($userLogin);
+            if ($user) {
+                FlashService::addMessage('error', "Le pseudo $userLogin est déjà utilisé.");
+                $isValidUserData = false;
+            }
+            $user = $userManager->findByEmail($userEmail);
+            if ($user) {
+                FlashService::addMessage('error', "L'email $userEmail est déjà utilisé.");
+                $isValidUserData = false;
+            }
+            if (!$isValidUserData) {
+                RenderService::renderView('sign-up', []);
+                return;
+            }
+            try {
+                $userManager->createUserFromData([
+                    'username' => $userLogin,
+                    'email' => $userEmail,
+                    'password' => $userPassword,
+                ]);
+            } catch (Exception $e) {
+                FlashService::addMessage('error', "Erreur lors de l'inscription : {$e->getMessage()}");
+                RenderService::renderView('sign-up', []);
+                return;
+            }
+            FlashService::addMessage('success', "Vous êtes inscrit avec succès ! Vous pouvez maintenant vous connecter.");
+
+            header('Location: index.php?route=sign-up');
+            return;
+        }
         RenderService::renderView('sign-up', []);
+    }
+
+    public function loginPage(): void {
+        if (isset($_POST['submit'])) {
+            $userManager = new UserManager();
+            $userEmail = $_POST['email'];
+            $userPassword = $_POST['password'];
+            $user = $userManager->findByEmail($userEmail);
+            if (!$user || !password_verify($userPassword, $user->getPasswordHash())) {
+                FlashService::addMessage('error', "Le mot de passe et/ou l'adresse email est incorrect.");
+                RenderService::renderView('login', []);
+                return;
+            }
+            FlashService::addMessage('success', "Vous êtes maintenant connecté en tant que {$user->getUsername()} !");
+            $_SESSION['loggedIn'] = true;
+            $_SESSION['currentUserId'] = $user->getId();
+            header('Location: index.php?route=home');
+            return;
+        }
+        RenderService::renderView('login', []);
+    }
+
+    public function logout(): void {
+        unset($_SESSION['loggedIn']);
+        unset($_SESSION['currentUserId']);
+        header('Location: index.php?route=home');
     }
 }
