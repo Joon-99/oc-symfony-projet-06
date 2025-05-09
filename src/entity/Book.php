@@ -4,15 +4,17 @@ class Book extends BaseEntity
     /**
      * Represents a book. A Book is owned by a User, has an Author and can have a File to illustrate its cover.
      */
+
+     public const DELETE_CONFIRM = "Êtes-vous sûr de vouloir supprimer ce livre ? Cette action est irréversible.";
     private int $ownerId; // References a User
     private string $title;
     private int $authorId; // References an Author
     private ?string $description;
     private int $coverImgId; // References a File
     private bool $available;
-    private ?Author $author = null; // References an Author
-    private ?File $coverImg = null; // References a File
-    private ?User $owner = null; // References a User
+    private ?Author $author = null; // References an Author entity
+    private ?File $coverImg = null; // References a File entity
+    private ?User $owner = null; // References a User entity
 
     public function getOwnerId(): int
     {

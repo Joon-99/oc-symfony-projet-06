@@ -16,7 +16,7 @@
         <a href="#">Messagerie</a>
         <div id="mailbox-notif">1</div>
     </div>
-    <a href="#">Mon compte</a>
+    <a href="index.php?route=my-profile">Mon compte</a>
     <?php
         if (UserService::userIsLoggedIn()) {
             echo '<a href="index.php?route=logout">Déconnexion</a>';

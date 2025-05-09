@@ -47,6 +47,30 @@ try {
             $controller = new MainController();
             $controller->logout();
             break;
+        case 'my-profile':
+            $controller = new MainController();
+            $controller->myProfilePage();
+            break;
+        case 'external-profile':
+            $controller = new MainController();
+            $userId = isset($_GET['id']) ? $_GET['id'] : null;
+            if (!$userId) {
+                throw new Exception("You need a user id to access this route.");
+            }
+            $controller->externalProfilePage($userId);
+            break;
+        case 'delete-book':
+            $controller = new MainController();
+            $bookId = isset($_GET['id']) ? $_GET['id'] : null;
+            if (!$bookId) {
+                throw new Exception("You need a book id to access this route.");
+            }
+            if (!UserService::userIsLoggedIn()) {
+                throw new Exception("You need to be logged in to access this route.");
+            }
+            $user = UserService::getCurrentUser();
+            $controller->deleteBook($user, $bookId);
+            break;
         default:
             throw new Exception("Route $route does not exist");
     }

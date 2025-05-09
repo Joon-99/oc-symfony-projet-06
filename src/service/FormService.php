@@ -1,5 +1,16 @@
 <?php
 abstract class FormService {
+
+    public static function checkUserName(string $userName): bool {
+        return preg_match(CONSTRAINT_USERNAME_REGEX, $userName);
+    }
+    public static function checkUserEmail(string $userEmail): bool {
+        return filter_var($userEmail, FILTER_VALIDATE_EMAIL);
+    }
+    public static function checkUserPassword(string $userPassword): bool {
+        return preg_match(CONSTRAINT_PASSWORD_REGEX, $userPassword);
+    }
+
     public static function checkUserSignUpData(array $UserData): bool {
         $isValid = true;
         if (!preg_match(CONSTRAINT_USERNAME_REGEX, $UserData['username'])) {

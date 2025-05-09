@@ -2,7 +2,7 @@
 $pageTitle = "TomTroc - Connexion";
 ob_start();
 ?>
-<section id="sign-in" class="vertical-split light-section">
+<section id="login" class="vertical-split light-section">
     <div class="left-split light-section">
         <div class="left-split-content">
         <?php

@@ -11,7 +11,14 @@ class UserManager
         $statement = DBManager::execQuery($sql, ['id' => $id]);
         $user = $statement->fetch();
         if ($user) {
-            return new User($user);
+            $newUser = new User($user);
+            $fileManager = new FileManager();
+            $profileImg = $fileManager->findById($newUser->getProfileImgId());
+            if (!$profileImg) {
+                $profileImg = $fileManager->findById(DEFAULT_PROFILE_IMG_ID); // Default profile image
+            }
+            $newUser->setProfileImg($profileImg);
+            return $newUser;
         }
         return null;
     }
@@ -92,6 +99,22 @@ class UserManager
             'email' => $userData['email'],
             'password_hash' => password_hash($userData['password'], PASSWORD_DEFAULT),
             'profile_img_id' => $userData['profile_img_id'] ?? null,
+        ]);
+        return $statement->rowCount() > 0;
+    }
+    public function updateUserEntity(User $user): bool
+    {
+        $sql = <<<SQL
+            UPDATE users
+            SET username = :username, email = :email, password_hash = :password_hash, profile_img_id = :profile_img_id
+            WHERE id = :id
+        SQL;
+        $statement = DBManager::execQuery($sql, [
+            'username' => $user->getUsername(),
+            'email' => $user->getEmail(),
+            'password_hash' => $user->getPasswordHash(),
+            'profile_img_id' => $user->getProfileImgId(),
+            'id' => $user->getId(),
         ]);
         return $statement->rowCount() > 0;
     }

@@ -4,9 +4,15 @@
     --light-text-color: #A6A6A6;
     --main-darker-background: #F5F3EF;
     --main-lighter-background: #FAF9F7;
+    --light-blue-background: #EDF2F6;
+
+    --important-text: #cb2d2d;
 
     --search-bar-decoration: #f0f0f0;
 
+    --available-color: #6DC5A1;
+    --not-available-color: #C56D6D;
+ 
     --success-color: #00AC66;
     --success-bg: #E6F7F0;
     --warning-color: #E6A817;
@@ -672,4 +678,322 @@ hr {
 .right-split img,
 .left-split img {
     width: 100%;
+}
+
+/* my profile page */
+
+.white-section {
+    background-color: white;
+    border-radius: 20px;
+}
+
+#my-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-left: 150px;
+    padding-top: 90px;
+}
+
+#my-profile h1 {
+    margin-bottom: 48px;
+}
+
+#profile-info-section {
+    display: flex;
+    flex-direction: row;
+    gap: 33px;
+    width: 1135px;
+    height: 500px;
+    margin-bottom: 32px;
+}
+
+.user-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-card h2 {
+    font-family: var(--playfair-font);
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 11px;
+}
+
+.user-card h3 {
+    font-family: var(--inter-font);
+    font-size: 8px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.user-card p {
+    font-family: var(--inter-font);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.user-card-img {
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+    margin-top: 48px;
+    margin-bottom: 5px;
+}
+
+#modif-link {
+    font-size: 14px;
+}
+
+.user-card-hr {
+    height: 1px;
+    width: 44%;
+    margin-top: 48px;
+    margin-bottom: 48px;
+    border-color: var(--main-darker-background);
+    border-style: solid;
+}
+
+.seniority-text {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: var(--inter-font);
+    color: var(--light-text-color);
+    margin-bottom: 21px;
+}
+
+#profile-info-section .user-card,
+#profile-info-section .modif-user-card {
+    width: 50%;
+    height: 100%;
+}
+
+
+
+/* modif-user section */
+
+.modif-user-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modif-user-form {
+    width: 58%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+#modif-user-form h2 {
+    width: 100%;
+    font-family: var(--inter-font);
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 36px;
+    margin-bottom: 26px;
+}
+
+#modif-user-form .form-field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+#modif-user-form .form-field label {
+    width: 100%;
+    font-size: 14px;
+    color: var(--light-text-color);
+}
+
+#modif-user-form .form-field input {
+    width: 100%;
+    height: 50px;
+    border-radius: 6px;
+    border: 1px solid var(--search-bar-decoration);
+    background-color: var(--light-blue-background);
+    padding-left: 14px;
+}
+
+#modif-user-form input[type="submit"] {
+    width: auto;
+    height: auto;
+    background-color: var(--main-darker-background);
+    color: var(--bright-green);
+    border-radius: 10px;
+    border: 1px solid var(--bright-green);
+    font-family: var(--inter-font);
+    font-weight: 600;
+    font-size: 16px;
+    padding: 22px 32px;
+}
+
+/** profile books section */
+
+#profile-books {
+    width: 1135px;
+    height: auto;
+    margin-bottom: 100px;
+    overflow: hidden;
+}
+
+#profile-books table{
+    width: 100%;
+    border-collapse: collapse;
+    overflow: scroll;
+    table-layout: auto;
+}
+
+.books-card {
+    padding-top: 33px;
+
+}
+
+.books-card thead {
+    border-bottom: 1px solid var(--main-darker-background);
+}
+
+.books-card tbody tr:nth-child(odd) {
+    background-color: white;
+}
+.books-card tbody tr:nth-child(even) {
+    background-color: var(--light-blue-background);
+}
+
+.books-card th {
+    text-align: start;
+    font-family: var(--inter-font);
+    font-weight: 600;
+    /* max-width: 130px; */
+    width: auto;
+    font-size: 8px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.books-card td {
+    border: none;
+    height: 130px;
+    max-height: 130px;
+    width: auto;
+    /* max-width: 130px; */
+    overflow: hidden;
+    font-family: var(--inter-font);
+    font-weight: 400;
+    font-size: 12px;
+    text-align: start;
+    padding: 0 40px;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+/* Apply special styling for the description column only */
+.books-card td:nth-child(4) {
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.books-card th:nth-child(5),
+.books-card td:nth-child(5) {
+    width: 1px; /* Force minimum width */
+}
+
+.books-card table td img {
+    width: 78px;
+    height: 78px;
+}
+
+.available-tag {
+    height: 20px;
+    width: 70px;
+    font-family: var(--inter-font);
+    font-weight: 500;
+    font-size: 9px;
+    color: white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.available {
+    background-color: var(--available-color);
+}
+
+.not-available {
+    background-color: var(--not-available-color);
+}
+
+.books-card-link {
+    text-decoration: underline;
+}
+
+.important {
+    color: var(--important-text);
+}
+
+.table-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*** external profile page */
+
+#external-profile {
+    display: flex;
+    padding-top: 103px;
+    padding-left: 150px;
+    padding-bottom: 275px;
+}
+
+.profile-cards {
+    display: flex;
+    width: 1135px;
+    gap: 28px;
+}
+
+#external-user-info {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    height: auto;
+}
+
+#ext-profile-books {
+    width: 1135px;
+    height: auto;
+    overflow: hidden;
+}
+
+#ext-profile-books table{
+    width: 100%;
+    border-collapse: collapse;
+    overflow: scroll;
+    table-layout: auto;
+}
+
+.grey-cta-btn {
+    background-color: var(--main-darker-background);
+    color: var(--bright-green);
+    border-radius: 10px;
+    border: 1px solid var(--bright-green);
+    font-family: var(--inter-font);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#send-message-grey-btn {
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 63px;
+    padding: 22px 38px;
+    margin-bottom: 48px;
 }
