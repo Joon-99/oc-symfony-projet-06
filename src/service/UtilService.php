@@ -8,7 +8,7 @@ abstract class UtilService {
      */
     public static function redirect(string $action, array $params = []) : void
     {
-        $url = "index.php?action=$action";
+        $url = "index.php?route=$action";
         foreach ($params as $paramName => $paramValue) {
             $url .= "&$paramName=$paramValue";
         }

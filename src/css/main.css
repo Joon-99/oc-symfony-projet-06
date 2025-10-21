@@ -19,6 +19,8 @@
     --warning-bg: #FDF7E8;
     --error-color: #D64045;
     --error-bg: #FCEBEC;
+    --info-color: #007BFF;
+    --info-bg: #E7F1FF;
 
     --playfair-font: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --inter-font: Inter, Helvetica, Arial, sans-serif;
@@ -34,6 +36,16 @@
 
 a {
     text-decoration: none;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
 }
 
 /* HEADER */
@@ -469,6 +481,11 @@ footer {
 .success {
     color: var(--success-color);
     background-color: var(--success-bg);
+}
+
+.info {
+    color: var(--info-color);
+    background-color: var(--info-bg);
 }
 
 /* books page */
@@ -996,4 +1013,39 @@ hr {
     height: 63px;
     padding: 22px 38px;
     margin-bottom: 48px;
+}
+
+/* edit book page */
+
+#edit-book {
+    margin-bottom: 2rem;
+    overflow: auto;
+}
+
+#edit-book-title {
+    font-size: 26px;
+}
+
+#edit-book-form {
+    justify-content: space-between;
+    width: 100%;
+}
+
+#edit-book-form img {
+    width: 100%;
+}
+
+#edit-book-img-section {
+    align-items: center;
+    width: 42%;
+}
+
+#edit-book-info-section {
+    align-items: center;
+    width: 38%;
+}
+
+#book-form-section {
+    margin: 2rem;
+    padding: 1rem;
 }

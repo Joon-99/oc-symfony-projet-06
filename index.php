@@ -6,16 +6,8 @@ FlashService::init();
 try {
     $route = isset($_REQUEST['route']) ? $_REQUEST['route'] : 'home';
 
-
     switch ($route) {
         case 'home':
-            // $userManager = new UserManager();
-            // var_dump($userManager->findById(1));
-            // $userData = $userManager->findById(1);
-            // var_dump($userData);
-            // $user = new User($userData);
-            // var_dump($user);
-
             $controller = new MainController();
             $controller->homePage();
             break;
@@ -70,6 +62,19 @@ try {
             }
             $user = UserService::getCurrentUser();
             $controller->deleteBook($user, $bookId);
+            break;
+        case 'edit-book':
+            $controller = new MainController();
+            $bookId = isset($_GET['id']) ? $_GET['id'] : null;
+            if (!$bookId) {
+                throw new Exception("You need a book id to access this route.");
+            }
+            if (!UserService::userIsLoggedIn()) {
+                $controller->loginPage();
+            } else {
+                $user = UserService::getCurrentUser();
+                $controller->editBook($user, $bookId);
+            }
             break;
         default:
             throw new Exception("Route $route does not exist");

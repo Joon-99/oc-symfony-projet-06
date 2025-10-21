@@ -3,12 +3,14 @@ $messageIcons = [
     'error' => 'fa-triangle-exclamation',
     'warning' => 'fa-exclamation',
     'success' => 'fa-check',
+    'info' => 'fa-info',
 ];
 
 $messagePrefixes = [
     'error' => 'ERREUR : ',
     'warning' => 'ATTENTION : ',
     'success' => 'Succès : ',
+    'info' => 'Info : ',
 ];
 
 foreach ($flashMessages as $flashMessage) {

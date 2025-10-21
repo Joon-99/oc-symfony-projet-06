@@ -36,4 +36,20 @@ class FileManager
         return null;
     }
 
+    public function createFileFromData(array $fileData): ?File
+    {
+        $sql = <<<SQL
+            INSERT INTO files (title, mime_type, file_path)
+            VALUES (:title, :mime_type, :file_path)
+        SQL;
+        $params = [
+            'title' => $fileData['title'],
+            'mime_type' => $fileData['mime_type'],
+            'file_path' => $fileData['file_path'],
+        ];
+        $statement = DBManager::execQuery($sql, $params);
+        $insertedId = DBManager::getLastInsertId();
+        return $this->findById($insertedId);
+    }
+
 }

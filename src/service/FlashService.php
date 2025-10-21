@@ -1,7 +1,7 @@
 <?php
 class FlashService {
     private const SESSION_KEY = 'flash_messages';
-    private const FLASH_TYPES = ['error', 'warning', 'success'];
+    private const FLASH_TYPES = ['error', 'warning', 'success', 'info'];
 
     /**
      * Initializes the flash message system.

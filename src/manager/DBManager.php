@@ -19,4 +19,8 @@ class DBManager
         return $statement;
     }
 
+    public static function getLastInsertId(): int {
+        $pdo = self::getPDO();
+        return (int)$pdo->lastInsertId();
+    }
 }

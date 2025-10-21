@@ -20,4 +20,16 @@ abstract class UserService {
         }
         return $user && in_array($user->getId(), ADMIN_IDS, true);
     }
+
+    public static function canModifyBook(User $user, Book $book): bool {
+        // Users can modify their own books
+        if ($user->getId() === $book->getOwnerId()) {
+            return true;
+        }
+        // Admins can modify any book
+        if (self::isAdmin($user)) {
+            return true;
+        }
+        return false;
+    }
 }

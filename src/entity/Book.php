@@ -100,4 +100,15 @@ class Book extends BaseEntity
         $this->owner = $owner;
     }
 
+    public function generateFileNameSlug(): string
+    {
+        $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->getTitle()), '-'));
+        $uniqId = uniqid();
+        return "{$this->getId()}-{$slug}-{$uniqId}";
+    }
+
+    public function generateFileTitle(): string
+    {
+        return "{$this->getTitle()} - Cover";
+    }
 }

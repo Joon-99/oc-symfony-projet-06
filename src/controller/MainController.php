@@ -227,4 +227,64 @@ class MainController {
             'externalAccount' => true,
         ]);
     }
+
+    public function editBook(User $user, int $bookId): void {
+        $bookManager = new BookManager();
+        $fileManager = new FileManager();
+        $authorManager = new AuthorManager();
+        $book = $bookId === 0 ? new Book() : $bookManager->findById($bookId);
+        if (!$book) {
+            FlashService::addMessage('error', "Livre introuvable.");
+            UtilService::redirect('my-profile');
+        }
+        if (!UserService::canModifyBook($user, $book)) {
+            FlashService::addMessage('error', "Vous ne pouvez pas modifier ce livre.");
+            UtilService::redirect('my-profile');
+        }
+        $authors = $authorManager->findAll();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $title = $_POST['title'] ?? null;
+            $authorId = $_POST['author'] ?? null;
+            $description = $_POST['description'] ?? null;
+            $available = $_POST['available'] ?? null;
+            $coverImgFile = $_FILES['cover-img'] ?? null;
+            $isValid = FormService::checkBookData([
+                'title' => $title,
+                'author' => $authorId,
+                'description' => $description,
+                'available' => $available,
+                'coverImgFile' => $coverImgFile,
+            ]);
+            if ($isValid) {
+                $book->setTitle($title);
+                $book->setAuthorId((int)$authorId);
+                $book->setAuthor($authorManager->findById((int)$authorId));
+                $book->setDescription($description);
+                $book->setAvailable((bool)$available);
+                if ($coverImgFile && $coverImgFile['error'] !== UPLOAD_ERR_NO_FILE) {
+                    $newFile = $fileManager->createFileFromData([
+                        'title' => $book->generateFileTitle(),
+                        'mime_type' => $coverImgFile['type'],
+                        'file_path' => $book->generateFileNameSlug() . '.' . pathinfo($coverImgFile['name'], PATHINFO_EXTENSION),
+                    ]);
+                    $book->setCoverImg($newFile);
+                    $book->setCoverImgId($newFile->getId());
+                    if (!move_uploaded_file($coverImgFile['tmp_name'], DATA_IMAGES_PATH . $newFile->getFilePath())) {
+                        FlashService::addMessage('error', "Erreur lors de l'enregistrement du fichier.");
+                    }
+                }
+                try {
+                    $bookManager->updateBook($book);
+                    FlashService::addMessage('success', "Livre enregistré avec succès !");
+                    UtilService::redirect('my-profile');
+                } catch (Exception $e) {
+                    FlashService::addMessage('error', "Erreur lors de l'enregistrement du livre : {$e->getMessage()}");
+                }
+            }
+        }
+        RenderService::renderView('edit-book', [
+            'book' => $book,
+            'authors' => $authors,
+        ]);
+    }
 }

@@ -148,4 +148,27 @@ class BookManager
         }
         return false;
     }
+
+    public function updateBook(Book $book): bool
+    {
+        $sql = <<<SQL
+            UPDATE books
+            SET title = :title,
+                author_id = :authorId,
+                description = :description,
+                available = :available,
+                cover_img_id = :coverImgId
+            WHERE id = :id
+        SQL;
+        $params = [
+            'title' => $book->getTitle(),
+            'authorId' => $book->getAuthorId(),
+            'description' => $book->getDescription(),
+            'available' => $book->isAvailable(),
+            'coverImgId' => $book->getCoverImgId(),
+            'id' => $book->getId(),
+        ];
+        $statement = DBManager::execQuery($sql, $params);
+        return $statement->rowCount() > 0;
+    }
 }

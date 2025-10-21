@@ -60,7 +60,7 @@ ob_start();
                             </td>
                             <td>
                                 <div class="table-actions">
-                                    <a href="#" class="books-card-link">Editer</a>
+                                    <a href="index.php?route=edit-book&id=<?= $book->getId()?>" class="books-card-link">Editer</a>
                                     <a href="index.php?route=delete-book&id=<?= $book->getId() ?>" class="books-card-link important" onclick="confirm(<?= Book::DELETE_CONFIRM ?>)">Supprimer</a>
                                 </div>
                             </td>
