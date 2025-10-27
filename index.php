@@ -76,6 +76,16 @@ try {
                 $controller->editBook($user, $bookId);
             }
             break;
+        case 'messages':
+            $controller = new MainController();
+            $recipientId = isset($_GET['recipient_id']) ? $_GET['recipient_id'] : null;
+            if (!UserService::userIsLoggedIn()) {
+                $controller->loginPage();
+            } else {
+                $user = UserService::getCurrentUser();
+                $controller->messagesPage($user, $recipientId);
+            }
+            break;
         default:
             throw new Exception("Route $route does not exist");
     }

@@ -269,7 +269,7 @@ class MainController {
                     ]);
                     $book->setCoverImg($newFile);
                     $book->setCoverImgId($newFile->getId());
-                    if (!move_uploaded_file($coverImgFile['tmp_name'], DATA_IMAGES_PATH . $newFile->getFilePath())) {
+                    if (!move_uploaded_file($coverImgFile['tmp_name'], DATA_BOOKS_IMAGES_PATH . $newFile->getFilePath())) {
                         FlashService::addMessage('error', "Erreur lors de l'enregistrement du fichier.");
                     }
                 }
@@ -285,6 +285,27 @@ class MainController {
         RenderService::renderView('edit-book', [
             'book' => $book,
             'authors' => $authors,
+        ]);
+    }
+
+    public function messagesPage(User $user, ?int $recipientId): void {
+        //TODO gérer le nouveau destinataire
+        $messageManager = new MessageManager();
+        $userManager = new UserManager();
+        $recipient = null;
+        if ($recipientId !== null) {
+            $recipient = $userManager->findById($recipientId);
+            if (!$recipient) {
+                FlashService::addMessage('error', "Destinataire introuvable.");
+                UtilService::redirect('home');
+            }
+        }
+        $conversations = $messageManager->findAllConvosByUserId($user->getId()) ?? [];
+        $recipientMessages = $messageManager->findAllBetweenUsers($user, $recipient);
+        RenderService::renderView('messages', [
+            'conversations' => $conversations,
+            'recipient' => $recipient,
+            'recipientMessages' => $recipientMessages,
         ]);
     }
 }

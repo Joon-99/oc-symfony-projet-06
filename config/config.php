@@ -7,7 +7,9 @@
     const DB_PWD = '';
 
     const VIEW_PATH = 'src/view';
-    const DATA_IMAGES_PATH = 'data/images/books/';
+    const DATA_IMAGES_PATH = 'data/images/';
+    const DATA_BOOKS_IMAGES_PATH = DATA_IMAGES_PATH . 'books/';
+    const DATA_USERS_IMAGES_PATH = DATA_IMAGES_PATH . 'users/';
 
     const CONSTRAINT_USERNAME_REGEX = '/^[a-zA-Z0-9.-_]{3,20}$/';
     const CONSTRAINT_USERNAME_DESCRIPTION = "Le pseudo doit contenir entre 3 et 20 caractères, les caractères suivants sont autorisés : <br>" .

@@ -62,4 +62,9 @@ class File extends BaseEntity
     {
         $this->filePath = $filePath;
     }
+
+    public function getUserProfilePath(): ?string
+    {
+        return DATA_USERS_IMAGES_PATH . $this->filePath;
+    }
 }

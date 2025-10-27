@@ -13,7 +13,7 @@
 <div id="user-sections">
     <div id="mailbox">
         <img src="data/images/messagerie.svg">
-        <a href="#">Messagerie</a>
+        <a href="index.php?route=messages">Messagerie</a>
         <div id="mailbox-notif">1</div>
     </div>
     <a href="index.php?route=my-profile">Mon compte</a>
