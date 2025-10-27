@@ -52,7 +52,8 @@ class MessageManager
                 AND LEAST(m.sender_id, m.receiver_id) = latest.participant2
                 AND m.created_at = latest.latest_message_time
             LEFT JOIN users u ON (u.id = CASE WHEN m.sender_id = :userId THEN m.receiver_id ELSE m.sender_id END)
-            WHERE participant1 = :userId OR participant2 = :userId;
+            WHERE participant1 = :userId OR participant2 = :userId
+            ORDER BY u.username;
         SQL;
         $statement = DBManager::execQuery($sql, ['userId' => $userId]);
         $conversationResults = $statement->fetchAll();

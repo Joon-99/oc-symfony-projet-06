@@ -301,6 +301,9 @@ class MainController {
             }
         }
         $conversations = $messageManager->findAllConvosByUserId($user->getId()) ?? [];
+        if ($recipient === null) {
+            $recipient = $conversations[0]['user'] ?? null;
+        }
         $recipientMessages = $messageManager->findAllBetweenUsers($user, $recipient);
         RenderService::renderView('messages', [
             'conversations' => $conversations,
