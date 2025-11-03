@@ -34,4 +34,12 @@ class Message extends BaseEntity
     {
         $this->content = $content;
     }
+
+    public function getAbbreviatedContent(int $maxLength = 30): string
+    {
+        if (mb_strlen($this->content) <= $maxLength) {
+            return $this->content;
+        }
+        return substr($this->content, 0, $maxLength - 3) . '...';
+    }
 }

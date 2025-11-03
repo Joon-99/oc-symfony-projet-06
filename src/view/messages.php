@@ -8,12 +8,13 @@ ob_start();
         <h2>Messagerie</h2>
         <?php 
         if (!empty($conversations)) {
-            foreach ($conversations as $conversation) { ?>
-                <img src="<?= $conversation['user']->getProfileImg()->getUserProfilePath(); ?>" alt="Profile Image" width="50" height="50">
-                <div><?= htmlspecialchars($conversation['user']->getUsername()); ?></div>
-                <div><?= htmlspecialchars($conversation['last_message']->getContent()); ?></div>
-            <?php } ?>
-        <?php } else { ?>
+            foreach ($conversations as $conversation) {
+                $cardSectionClass = $recipient->getId() === $conversation['user']->getId() ? 'white-section' : 'dark-section';
+                $convoRecipient = $conversation['user'];
+                $convoLastMessage = $conversation['last_message'];  
+                require 'convo-card.php';
+            }
+        } else { ?>
             <p>Aucune conversation disponible.</p>
         <?php } ?>
     </section> 

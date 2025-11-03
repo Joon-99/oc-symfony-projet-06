@@ -1110,3 +1110,24 @@ hr {
     font-weight: 400;
     color: var(--light-text-color);
 }
+
+/* messagerie*/
+
+#section-messagerie {
+    padding: 0 150px;
+    height: 893px;
+}
+
+#messagerie {
+    width: 308px;
+}
+
+#messagerie h2 {
+    font-size: 26px;
+    padding: 55px 0px 27px 34px;
+    color: black;
+}
+
+#conversation {
+    width: 832px;
+}
