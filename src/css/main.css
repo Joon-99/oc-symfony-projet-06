@@ -1020,6 +1020,8 @@ hr {
 #edit-book {
     margin-bottom: 2rem;
     overflow: auto;
+    padding: 40px 150px 92px 150px;
+    gap: 23px;
 }
 
 #edit-book-title {
@@ -1041,11 +1043,70 @@ hr {
 }
 
 #edit-book-info-section {
-    align-items: center;
+    align-items: start;
     width: 38%;
+    gap: 32px;
+}
+
+#edit-book-info-section .form-field {
+    width: 100%;
 }
 
 #book-form-section {
-    margin: 2rem;
-    padding: 1rem;
+    padding: 50px;
+}
+
+.file-hidden-input {
+    display: none;
+}
+
+.edit-book-input-label {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--light-text-color);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.edit-book-input-field {
+    border: var(--search-bar-decoration) 1px solid;
+    border-radius: 6px;
+    height: 50px;
+    width: 100%;
+    background-color: var(--light-blue-background);
+    box-sizing: border-box;
+    padding: 14px 16px;
+    font-size: 14px;
+}
+
+.edit-book-input-field--tall {
+    height: 356px;
+}
+
+.file-input-action {
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: underline solid;
+}
+
+.green-cta-btn--edit-book {
+    width: 322px;
+    height: 63px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.align-self-start {
+    align-self: flex-start;
+}
+
+.align-self-end {
+    align-self: flex-end;
+}
+
+.breadcrumbs-link {
+    font-family: var(--inter-font);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--light-text-color);
 }
