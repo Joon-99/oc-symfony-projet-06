@@ -311,4 +311,27 @@ class MainController {
             'recipientMessages' => $recipientMessages,
         ]);
     }
+
+    public function sendMessage(User $user, ?int $recipientId): void {
+        $userManager = new UserManager();
+        $recipient = $userManager->findById($recipientId);
+        if (!$recipient) {
+            FlashService::addMessage('error', "Destinataire introuvable.");
+            UtilService::redirect('messages');
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $messageContent = $_POST['message_content'] ?? null;
+            $isValid = FormService::checkNewMessageData($messageContent);
+            if ($isValid) {
+                $messageManager = new MessageManager();
+                try {
+                    $messageManager->createNewMessage($user->getId(), $recipient->getId(), $messageContent);
+                    FlashService::addMessage('success', "Message envoyé avec succès !");
+                } catch (Exception $e) {
+                    FlashService::addMessage('error', "Erreur lors de l'envoi du message : {$e->getMessage()}");
+                }
+            }
+        }
+        UtilService::redirect('messages', ['recipient_id' => $recipient->getId()]);
+    }
 }

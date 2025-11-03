@@ -97,4 +97,22 @@ class MessageManager
         return [];
     }
 
+    public function createNewMessage(int $sender_id, int $receiver_id, string $content): ?Message {
+        $sql = <<<SQL
+            INSERT INTO messages (sender_id, receiver_id, content)
+            VALUES (:sender_id, :receiver_id, :content)
+        SQL;
+        $params = [
+            'sender_id' => $sender_id,
+            'receiver_id' => $receiver_id,
+            'content' => $content,
+        ];
+        $result = DBManager::execQuery($sql, $params);
+        if ($result->rowCount() > 0) {
+            $newMessageId = DBManager::getPDO()->lastInsertId();
+            return $this->findById((int)$newMessageId);
+        }
+        return null;
+    }
+
 }

@@ -87,4 +87,13 @@ abstract class FormService {
         }
         return $isValid;
     }
+
+    public static function checkNewMessageData(string $messageContent): bool {
+        $isValid = true;
+        if (!preg_match(CONSTRAINT_NEW_MESSAGE_REGEX, $messageContent)) {
+            FlashService::addMessage('error', CONSTRAINT_NEW_MESSAGE_DESCRIPTION, 'raw');
+            $isValid = false;
+        }
+        return $isValid;
+    }
 }

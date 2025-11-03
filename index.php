@@ -86,6 +86,18 @@ try {
                 $controller->messagesPage($user, $recipientId);
             }
             break;
+        case 'send-message':
+            $controller = new MainController();
+            $recipientId = $_GET['recipient_id'] ?? null;
+            if ($recipientId === null) {
+                throw new Exception("You need a recipient id to send a message.");
+            }
+            if (!UserService::userIsLoggedIn()) {
+                $controller->loginPage();
+            } else {
+                $user = UserService::getCurrentUser();
+                $controller->sendMessage($user, $recipientId);
+            }
         default:
             throw new Exception("Route $route does not exist");
     }

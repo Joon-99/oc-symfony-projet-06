@@ -26,6 +26,9 @@
     const CONSTRAINT_BOOK_DESCRIPTION_REGEX = '/^[\p{L}\p{N}\s\p{P}]{0,16000}$/u';
     const CONSTRAINT_BOOK_DESCRIPTION_DESCRIPTION = "La description du livre ne peut pas dépasser 16000 caractères.";
 
+    const CONSTRAINT_NEW_MESSAGE_REGEX = '/^[\p{L}\p{N}\s\p{P}]{1,16000}$/u';
+    const CONSTRAINT_NEW_MESSAGE_DESCRIPTION = "Le message doit contenir entre 1 et 16000 caractères.";
+
     const CONSTRAINT_FILE_SIZE_MB = 10; // Max file size in MB
 
     const DEFAULT_PROFILE_IMG_ID = 7; // Default profile image id
