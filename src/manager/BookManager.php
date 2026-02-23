@@ -76,9 +76,10 @@ class BookManager
             SELECT *
             FROM books
             LEFT JOIN authors ON books.author_id = authors.id
-            WHERE books.title LIKE :searchText
+            WHERE (books.title LIKE :searchText
             OR CONCAT(authors.first_name, ' ', authors.last_name) LIKE :searchText
-            OR authors.pen_name LIKE :searchText
+            OR authors.pen_name LIKE :searchText)
+            AND books.available = 1
         SQL;
         $params = [
             'searchText' => "%$searchText%",

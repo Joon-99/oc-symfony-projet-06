@@ -19,7 +19,7 @@ class MainController {
                 FlashService::addMessage('warning', "Aucun livre trouvé pour la recherche : $searchText");
             }
         } else {
-            $books = $bookManager->findAll();
+            $books = $bookManager->findAllAvailable();
         }
         RenderService::renderView('books', [
             'searchText' => $searchText,
