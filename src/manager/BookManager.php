@@ -172,4 +172,25 @@ class BookManager
         $statement = DBManager::execQuery($sql, $params);
         return $statement->rowCount() > 0;
     }
+
+    public function createBook(Book $book): ?int
+    {
+        $sql = <<<SQL
+            INSERT INTO books (title, author_id, description, available, cover_img_id, owner_id)
+            VALUES (:title, :authorId, :description, :available, :coverImgId, :ownerId)
+        SQL;
+        $params = [
+            'title' => $book->getTitle(),
+            'authorId' => $book->getAuthorId(),
+            'description' => $book->getDescription(),
+            'available' => $book->isAvailable(),
+            'coverImgId' => $book->getCoverImgId(),
+            'ownerId' => $book->getOwnerId(),
+        ];
+        $statement = DBManager::execQuery($sql, $params);
+        if ($statement->rowCount() > 0) {
+            return (int)DBManager::getLastInsertId();
+        }
+        return null;
+    }
 }

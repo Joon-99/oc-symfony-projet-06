@@ -66,7 +66,7 @@ try {
         case 'edit-book':
             $controller = new MainController();
             $bookId = isset($_GET['id']) ? $_GET['id'] : null;
-            if (!$bookId) {
+            if ($bookId === null) {
                 throw new Exception("You need a book id to access this route.");
             }
             if (!UserService::userIsLoggedIn()) {

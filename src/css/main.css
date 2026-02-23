@@ -699,6 +699,23 @@ hr {
 
 /* my profile page */
 
+#my-profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1135px;
+    margin-bottom: 48px;
+}
+
+#my-profile-title {
+    margin-bottom: 0 !important;
+}
+
+.add-book-btn {
+    line-height: 50px;
+    text-align: center;
+}
+
 .white-section {
     background-color: white;
     border-radius: 20px;

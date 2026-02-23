@@ -3,7 +3,10 @@ $pageTitle = "TomTroc - Mon compte";
 ob_start();
 ?>
 <section id="my-profile" class="profile light-section">
-    <h1>Mon compte</h1>
+    <div id="my-profile-header" class="flex-row">
+        <h1 id="my-profile-title">Mon compte</h1>
+        <a href="index.php?route=edit-book&id=0" class="green-cta-btn add-book-btn">Ajouter un livre</a>
+    </div>
     <div id="profile-info-section">
         <div class="user-card white-section">
             <?php

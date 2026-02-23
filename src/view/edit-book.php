@@ -9,7 +9,8 @@ ob_start();
         <form class="flex-row" id="edit-book-form" method="POST" action="index.php?route=edit-book&id=<?= $book->getId() ?>" enctype="multipart/form-data">
             <div id="edit-book-img-section" class="form-field flex-column">
                 <label class="edit-book-input-label align-self-start">Photo</label>
-                <img src="data/images/books/<?= $book->getCoverImg()->getFilePath() ?>" alt="<?= htmlspecialchars($book->getTitle()) ?>" width="488" height="488">
+                <?php $coverImg = $book->getCoverImg(); ?>
+                <img id ="cover-img-preview" src="data/images/books/<?php echo $coverImg?->getFilePath() ?? 'placeholder.jpg'?>" alt="<?= htmlspecialchars($book->getTitle() ?? '') ?>" width="488" height="488">
                 <input type="file" id="cover-img" name="cover-img" accept="image/*" class="file-hidden-input">
                 <label for="cover-img" class="file-input-action align-self-end">Modifier la photo</label>
             </div>
@@ -21,8 +22,9 @@ ob_start();
                 <div class="form-field">
                     <label for="author" class="edit-book-input-label">Auteur</label>
                     <select id="author" name="author" class="edit-book-input-field">
+                        <?php $currentAuthorId = $book->getAuthor() ? $book->getAuthor()->getId() : ($book->getAuthorId() ?? null); ?>
                         <?php foreach ($authors as $author): ?>
-                            <option value="<?= $author->getId() ?>" <?= $author->getId() === $book->getAuthor()->getId() ? 'selected' : '' ?>>
+                            <option value="<?= $author->getId() ?>" <?= $author->getId() === $currentAuthorId ? 'selected' : '' ?>>
                                 <?= htmlspecialchars($author->getFullName()) ?>
                             </option>
                         <?php endforeach; ?>
@@ -45,5 +47,17 @@ ob_start();
     </div>
 
 </section>
+<script>
+    const coverInput = document.querySelector('#cover-img');
+    const defaultCoverSrc = document.querySelector('#cover-img-preview').src;
+    coverInput.onchange = evt => {
+        const [file] = coverInput.files
+        if (file) {
+            document.querySelector('#cover-img-preview').src = URL.createObjectURL(file)
+        } else {
+            document.querySelector('#cover-img-preview').src = defaultCoverSrc;
+        }
+    }
+</script>
 <?php
 $pageContent = ob_get_clean();

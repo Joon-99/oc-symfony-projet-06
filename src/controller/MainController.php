@@ -238,11 +238,26 @@ class MainController {
             FlashService::addMessage('error', "Livre introuvable.");
             UtilService::redirect('my-profile');
         }
-        if (!UserService::canModifyBook($user, $book)) {
+        if ($bookId !== 0 && !UserService::canModifyBook($user, $book)) {
             FlashService::addMessage('error', "Vous ne pouvez pas modifier ce livre.");
             UtilService::redirect('my-profile');
         }
         $authors = $authorManager->findAll();
+        if ($bookId === 0) {
+            $firstAuthor = is_array($authors) && count($authors) ? $authors[0] : null;
+            $book->setId(0);
+            $book->setOwnerId($user->getId());
+            $book->setTitle('');
+            $book->setAuthorId($firstAuthor ? $firstAuthor->getId() : 0);
+            $book->setAuthor($firstAuthor);
+            $book->setDescription('');
+            $book->setAvailable(true);
+            $book->setCoverImgId(8);
+            $book->setCoverImg(null);
+            $book->setValid(1);
+            $book->setCreatedAt(new DateTime());
+            $book->setUpdatedAt(new DateTime());
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $title = $_POST['title'] ?? null;
             $authorId = $_POST['author'] ?? null;
@@ -275,7 +290,11 @@ class MainController {
                     }
                 }
                 try {
-                    $bookManager->updateBook($book);
+                    if ($bookId === 0) {
+                        $bookManager->createBook($book);
+                    } else {
+                        $bookManager->updateBook($book);
+                    }
                     FlashService::addMessage('success', "Livre enregistré avec succès !");
                     UtilService::redirect('my-profile');
                 } catch (Exception $e) {
