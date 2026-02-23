@@ -4,7 +4,7 @@
  * @var string $userName User's display name
  */
 ?>
-<a href="#">
+<a href="index.php?route=external-profile&id=<?= $userId ?>">
     <div class="user-tag">
         <img src="data/images/users/<?= $userImg ?>" alt="User Image" class="user-img-tag">
         <div class="user-name-tag"><?= $userName ?></div>

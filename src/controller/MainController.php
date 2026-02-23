@@ -45,6 +45,7 @@ class MainController {
             'description' => $book->getDescription(),
             'ownerUsername' => $book->getOwner()->getUsername(),
             'ownerImage' => $ownerImage,
+            'ownerId' => $book->getOwner()->getId(),
         ]);
     }
 
