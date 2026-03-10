@@ -1,7 +1,6 @@
 <?php
-namespace App\Entity;
 
-use App\Entity\BaseEntity;
+namespace App\Entity;
 
 class Author extends BaseEntity
 {
@@ -65,5 +64,4 @@ class Author extends BaseEntity
     {
         $this->biography = $biography;
     }
-
 }

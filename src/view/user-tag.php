@@ -1,5 +1,6 @@
 <?php
-/** 
+
+/**
  * @var string $userImg User's profile image filename
  * @var string $userName User's display name
  */

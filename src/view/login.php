@@ -10,9 +10,12 @@ ob_start();
             echo \App\View\Form::renderForm(
                 'Connexion',
                 [
-                    ['type' => 'email', 'name' => 'email', 'label' => 'Adresse email', 'placeholder' => '', 'required' => 'required'],
-                    ['type' => 'password', 'name' => 'password', 'label' => 'Mot de passe', 'placeholder' => '', 'required' => 'required'],
-                    ['type' => 'submit', 'name' => 'submit', 'label' => 'S\'inscrire', 'placeholder' => '', 'required' => 'required'],
+                    ['type' => 'email', 'name' => 'email', 'label' => 'Adresse email', 'placeholder' => '',
+                    'required' => 'required'],
+                    ['type' => 'password', 'name' => 'password', 'label' => 'Mot de passe', 'placeholder' => '',
+                    'required' => 'required'],
+                    ['type' => 'submit', 'name' => 'submit', 'label' => 'Se connecter', 'placeholder' => '',
+                    'required' => 'required'],
                 ],
                 "index.php?route=login",
                 "Se connecter",

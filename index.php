@@ -1,4 +1,5 @@
 <?php
+
 require_once 'config/autoload.php';
 require_once 'config/config.php';
 
@@ -24,7 +25,7 @@ try {
         case 'search-book':
             $searchText = isset($_GET['search-book']) ? $_GET['search-book'] : null;
             $controller = new MainController();
-            $controller->booksAvailable($searchText);   
+            $controller->booksAvailable($searchText);
             break;
         case 'book-details':
             $controller = new MainController();
@@ -33,6 +34,7 @@ try {
                 throw new Exception("You need a book id to access this route.");
             }
             $controller->bookDetails($bookId);
+            break;
         case 'sign-up':
             $controller = new MainController();
             $controller->signUpPage();
@@ -104,6 +106,7 @@ try {
                 $user = UserService::getCurrentUser();
                 $controller->sendMessage($user, $recipientId);
             }
+            break;
         default:
             throw new Exception("Route $route does not exist");
     }

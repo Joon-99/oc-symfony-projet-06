@@ -1,10 +1,13 @@
 <?php
+
 /** @var User $convoRecipient */
 /** @var Message $convoLastMessage */
 ?>
-<a class="flex-row <?= $cardSectionClass; ?> convo-card" href="index.php?route=messages&recipient_id=<?= $convoRecipient->getId(); ?>" class="flex-row">
+<a class="flex-row <?= $cardSectionClass; ?> convo-card"
+href="index.php?route=messages&recipient_id=<?= $convoRecipient->getId(); ?>">
         <div class="convo-card-img-section">
-            <img src="<?= $convoRecipient->getProfileImg()->getUserProfilePath(); ?>" alt="avatar du destinataire" class="messagerie-avatar messagerie-avatar-large">
+            <img src="<?= $convoRecipient->getProfileImg()->getUserProfilePath(); ?>"
+            alt="avatar du destinataire" class="messagerie-avatar messagerie-avatar-large">
         </div>
         <div class="flex-column convo-card-data">
             <div class="flex-row convo-card-metadata">

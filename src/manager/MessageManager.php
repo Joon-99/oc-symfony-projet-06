@@ -45,7 +45,9 @@ class MessageManager
     public function findAllConvosByUserId(int $userId): ?array
     {
         $sql = <<<SQL
-            SELECT u.id AS user_id, u.profile_img_id AS user_profile_img_id, u.username AS username, m.id AS message_id, m.content AS last_message_content
+            SELECT
+                u.id AS user_id, u.profile_img_id AS user_profile_img_id, u.username AS username,
+                m.id AS message_id, m.content AS last_message_content
             FROM messages m 
             JOIN ( 
                 SELECT GREATEST(sender_id, receiver_id) AS participant1,

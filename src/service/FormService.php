@@ -50,12 +50,18 @@ abstract class FormService
         }
         $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
         if (!in_array($coverImgFile['type'], $allowedMimeTypes, true)) {
-            FlashService::addMessage('error', "Le type de fichier de l'image de couverture n'est pas autorisé. Types autorisés : JPEG, PNG, GIF.");
+            FlashService::addMessage(
+                'error',
+                "Le type de fichier de l'image de couverture n'est pas autorisé. Types autorisés : JPEG, PNG, GIF.",
+            );
             return false;
         }
         $maxFileSize = CONSTRAINT_FILE_SIZE_MB * 1024 * 1024;
         if ($coverImgFile['size'] > $maxFileSize) {
-            FlashService::addMessage('error', "La taille de l'image de couverture dépasse la limite autorisée de " . CONSTRAINT_FILE_SIZE_MB . " Mo.");
+            FlashService::addMessage(
+                'error',
+                "La taille de l'image de couverture dépasse la limite autorisée de " . CONSTRAINT_FILE_SIZE_MB . " Mo."
+            );
             return false;
         }
         return true;

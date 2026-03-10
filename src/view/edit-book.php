@@ -6,25 +6,31 @@ ob_start();
     <a class="breadcrumbs-link" href="index.php?route=my-profile">← Retour</a>
     <h1 id="edit-book-title">Modifier les informations</h1>
     <div id="book-form-section" class="white-section">
-        <form class="flex-row" id="edit-book-form" method="POST" action="index.php?route=edit-book&id=<?= $book->getId() ?>" enctype="multipart/form-data">
+        <form class="flex-row" id="edit-book-form" method="POST"
+        action="index.php?route=edit-book&id=<?= $book->getId() ?>" enctype="multipart/form-data">
             <div id="edit-book-img-section" class="form-field flex-column">
                 <label class="edit-book-input-label align-self-start">Photo</label>
                 <?php $coverImg = $book->getCoverImg(); ?>
-                <img id ="cover-img-preview" src="data/images/books/<?php echo $coverImg?->getFilePath() ?? 'placeholder.jpg'?>" alt="<?= htmlspecialchars($book->getTitle() ?? '') ?>" width="488" height="488">
+                <img id ="cover-img-preview"
+                src="data/images/books/<?php echo $coverImg?->getFilePath() ?? 'placeholder.jpg'?>"
+                alt="<?= htmlspecialchars($book->getTitle() ?? '') ?>" width="488" height="488">
                 <input type="file" id="cover-img" name="cover-img" accept="image/*" class="file-hidden-input">
                 <label for="cover-img" class="file-input-action align-self-end">Modifier la photo</label>
             </div>
             <div id="edit-book-info-section" class="flex-column">
                 <div class="form-field">
                     <label for="title" class="edit-book-input-label">Titre</label>
-                    <input class="edit-book-input-field" type="text" id="title" name="title" value="<?= htmlspecialchars($book->getTitle()) ?>" required>
+                    <input class="edit-book-input-field" type="text" id="title" name="title"
+                    value="<?= htmlspecialchars($book->getTitle()) ?>" required>
                 </div>
                 <div class="form-field">
                     <label for="author" class="edit-book-input-label">Auteur</label>
                     <select id="author" name="author" class="edit-book-input-field">
-                        <?php $currentAuthorId = $book->getAuthor() ? $book->getAuthor()->getId() : ($book->getAuthorId() ?? null); ?>
+                        <?php $currentAuthorId = $book->getAuthor() ?
+                        $book->getAuthor()->getId() : ($book->getAuthorId() ?? null); ?>
                         <?php foreach ($authors as $author) : ?>
-                            <option value="<?= $author->getId() ?>" <?= $author->getId() === $currentAuthorId ? 'selected' : '' ?>>
+                            <option value="<?= $author->getId() ?>"
+                            <?= $author->getId() === $currentAuthorId ? 'selected' : '' ?>>
                                 <?= htmlspecialchars($author->getFullName()) ?>
                             </option>
                         <?php endforeach; ?>
@@ -32,7 +38,10 @@ ob_start();
                 </div>
                 <div class="form-field">
                     <label for="description" class="edit-book-input-label">Description</label>
-                    <textarea id="description" name="description" class="edit-book-input-field edit-book-input-field--tall" required><?= htmlspecialchars($book->getDescription()) ?></textarea>
+                    <textarea id="description" name="description"
+                    class="edit-book-input-field edit-book-input-field--tall" required>
+                        <?= htmlspecialchars($book->getDescription()) ?>
+                    </textarea>
                 </div>
                 <div class="form-field">
                     <label for="available" class="edit-book-input-label">Disponibilité</label>

@@ -30,7 +30,10 @@ ob_start();
                         ?>
 
                             <tr>
-                                <td><img src="data/images/books/<?= $book->getCoverImg()->getFilePath() ?>" alt="<?= htmlspecialchars($book->getTitle()) ?>"></td>
+                                <td>
+                                    <img src="data/images/books/<?= $book->getCoverImg()->getFilePath() ?>"
+                                    alt="<?= htmlspecialchars($book->getTitle()) ?>">
+                                </td>
                                 <td><?= htmlspecialchars($book->getTitle()) ?></td>
                                 <td><?= htmlspecialchars($book->getAuthor()->getFullName()) ?></td>
                                 <td><?= htmlspecialchars($book->getDescription()) ?></td>

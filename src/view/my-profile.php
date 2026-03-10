@@ -52,7 +52,10 @@ ob_start();
                     ?>
 
                         <tr>
-                            <td><img src="data/images/books/<?= $book->getCoverImg()->getFilePath() ?>" alt="<?= htmlspecialchars($book->getTitle()) ?>"></td>
+                            <td>
+                                <img src="data/images/books/<?= $book->getCoverImg()->getFilePath() ?>" 
+                                alt="<?= htmlspecialchars($book->getTitle()) ?>">
+                            </td>
                             <td><?= htmlspecialchars($book->getTitle()) ?></td>
                             <td><?= htmlspecialchars($book->getAuthor()->getFullName()) ?></td>
                             <td><?= htmlspecialchars($book->getDescription()) ?></td>
@@ -63,8 +66,11 @@ ob_start();
                             </td>
                             <td>
                                 <div class="table-actions">
-                                    <a href="index.php?route=edit-book&id=<?= $book->getId()?>" class="books-card-link">Editer</a>
-                                    <a href="index.php?route=delete-book&id=<?= $book->getId() ?>" class="books-card-link important" onclick="confirm(<?= \App\Entity\Book::DELETE_CONFIRM ?>)">Supprimer</a>
+                                    <a href="index.php?route=edit-book&id=<?= $book->getId()?>" 
+                                    class="books-card-link">Editer</a>
+                                    <a href="index.php?route=delete-book&id=<?= $book->getId() ?>" 
+                                    class="books-card-link important"
+                                    onclick="confirm(<?= \App\Entity\Book::DELETE_CONFIRM ?>)">Supprimer</a>
                                 </div>
                             </td>
                         </tr>

@@ -107,8 +107,10 @@ class MainController
                 RenderService::renderView('sign-up', []);
                 return;
             }
-            FlashService::addMessage('success', "Vous êtes inscrit avec succès ! Vous pouvez maintenant vous connecter.");
-
+            FlashService::addMessage(
+                'success',
+                "Vous êtes inscrit avec succès ! Vous pouvez maintenant vous connecter.",
+            );
             header('Location: index.php?route=sign-up');
             return;
         }
@@ -307,11 +309,13 @@ class MainController
                     $newFile = $fileManager->createFileFromData([
                         'title' => $book->generateFileTitle(),
                         'mime_type' => $coverImgFile['type'],
-                        'file_path' => $book->generateFileNameSlug() . '.' . pathinfo($coverImgFile['name'], PATHINFO_EXTENSION),
+                        'file_path' => $book->generateFileNameSlug() . '.'
+                        . pathinfo($coverImgFile['name'], PATHINFO_EXTENSION),
                     ]);
                     $book->setCoverImg($newFile);
                     $book->setCoverImgId($newFile->getId());
-                    if (!move_uploaded_file($coverImgFile['tmp_name'], DATA_BOOKS_IMAGES_PATH . $newFile->getFilePath())) {
+                    $uploadPath = DATA_BOOKS_IMAGES_PATH . $newFile->getFilePath();
+                    if (!move_uploaded_file($coverImgFile['tmp_name'], $uploadPath)) {
                         FlashService::addMessage('error', "Erreur lors de l'enregistrement du fichier.");
                     }
                 }

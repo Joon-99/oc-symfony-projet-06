@@ -1,4 +1,5 @@
 <?php
+
 $messageIcons = [
     'error' => 'fa-triangle-exclamation',
     'warning' => 'fa-exclamation',
@@ -15,7 +16,7 @@ $messagePrefixes = [
 
 foreach ($flashMessages as $flashMessage) {
     $iconClass = $messageIcons[$flashMessage['type']];
-    $faIcon = '<i class="fa-solid ' . $iconClass . ' '. $flashMessage['type'] . '"></i>';
+    $faIcon = '<i class="fa-solid ' . $iconClass . ' ' . $flashMessage['type'] . '"></i>';
     $message = $messagePrefixes[$flashMessage['type']] . $flashMessage['msg'];
     echo '<div class="flash-message ' . $flashMessage['type'] . '">' . $faIcon . "<p>$message</p>" . '</div>';
 }

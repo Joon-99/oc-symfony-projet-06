@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity;
 
 use DateTime;
@@ -10,14 +11,14 @@ abstract class BaseEntity
     private DateTime $createdAt;
     private DateTime $updatedAt;
 
-    public function __construct(array $data = []) 
+    public function __construct(array $data = [])
     {
         if (!empty($data)) {
             $this->hydrate($data);
         }
     }
 
-    protected function hydrate(array $data) : void 
+    protected function hydrate(array $data): void
     {
         foreach ($data as $key => $value) {
             $method = 'set' . str_replace('_', '', ucwords($key, '_'));
