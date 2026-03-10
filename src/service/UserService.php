@@ -1,10 +1,20 @@
 <?php
-abstract class UserService {
-    public static function userIsLoggedIn(): bool {
+
+namespace App\Service;
+
+use App\Entity\User;
+use App\Entity\Book;
+use App\Manager\UserManager;
+
+abstract class UserService
+{
+    public static function userIsLoggedIn(): bool
+    {
         return isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true;
     }
 
-    public static function getCurrentUser(): ?User {
+    public static function getCurrentUser(): ?User
+    {
         $currentUserId = isset($_SESSION['currentUserId']) ? $_SESSION['currentUserId'] : null;
         if ($currentUserId) {
             $userManager = new UserManager();
@@ -13,7 +23,8 @@ abstract class UserService {
         return null;
     }
 
-    public static function isAdmin(User | int $user): bool {
+    public static function isAdmin(User | int $user): bool
+    {
         if (is_int($user)) {
             $userManager = new UserManager();
             $user = $userManager->findById($user);
@@ -21,7 +32,8 @@ abstract class UserService {
         return $user && in_array($user->getId(), ADMIN_IDS, true);
     }
 
-    public static function canModifyBook(User $user, Book $book): bool {
+    public static function canModifyBook(User $user, Book $book): bool
+    {
         // Users can modify their own books
         if ($user->getId() === $book->getOwnerId()) {
             return true;

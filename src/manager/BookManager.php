@@ -1,4 +1,9 @@
 <?php
+
+namespace App\Manager;
+
+use App\Entity\Book;
+
 class BookManager
 {
     public function findById(int $id): ?Book
@@ -20,7 +25,7 @@ class BookManager
             $coverFile = $fileManager->findById($newBook->getCoverImgId());
             $newBook->setAuthor($author);
             $newBook->setOwner($owner);
-            $newBook->setCoverImg($coverFile);  
+            $newBook->setCoverImg($coverFile);
             return $newBook;
         }
         return null;
@@ -71,7 +76,8 @@ class BookManager
     /**
      * @return Book[] | null
      */
-    public function findByText(string $searchText): ?array  {
+    public function findByText(string $searchText): ?array
+    {
         $sql = <<<SQL
             SELECT *
             FROM books

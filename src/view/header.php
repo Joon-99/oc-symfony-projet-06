@@ -18,10 +18,10 @@
     </div>
     <a href="index.php?route=my-profile">Mon compte</a>
     <?php
-        if (UserService::userIsLoggedIn()) {
-            echo '<a href="index.php?route=logout">Déconnexion</a>';
-        } else {
-            echo '<a href="index.php?route=login">Connexion</a>';
-        }
+    if (\App\Service\UserService::userIsLoggedIn()) {
+        echo '<a href="index.php?route=logout">Déconnexion</a>';
+    } else {
+        echo '<a href="index.php?route=login">Connexion</a>';
+    }
     ?>
 </div>

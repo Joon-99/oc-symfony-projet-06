@@ -12,22 +12,22 @@
     <body>
         <header>
             <?php
-                require_once 'header.php';
+                require_once VIEW_PATH . '/header.php';
             ?>
         </header>
         <?php
-            if (FlashService::hasMessages()) {
-                echo '<div id="flash-section" class="dark-section">';
-                require_once 'flash.php';
-                echo '</div>';
-            }
+        if (\App\Service\FlashService::hasMessages()) {
+            echo '<div id="flash-section" class="dark-section">';
+            require_once VIEW_PATH . '/flash.php';
+            echo '</div>';
+        }
         ?>
         <main>
             <?= $pageContent ?>
         </main>
         <footer>
             <?php
-                require_once 'footer.php';
+                require_once VIEW_PATH . '/footer.php';
             ?>
         </footer>
     </body>

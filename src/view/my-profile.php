@@ -10,7 +10,7 @@ ob_start();
     <div id="profile-info-section">
         <div class="user-card white-section">
             <?php
-                require_once 'user-card.php';
+                require_once VIEW_PATH . '/user-card.php';
             ?>
         </div>
         <div class="modif-user-card white-section">
@@ -46,10 +46,10 @@ ob_start();
                 </thead>
                 <tbody>
                 <?php
-                    foreach ($userBooks as $book) {
-                        /** @var Book $book */
-                        $availableClass = $book->isAvailable() ? 'available' : 'not-available';
-                        ?>
+                foreach ($userBooks as $book) {
+                    /** @var Book $book */
+                    $availableClass = $book->isAvailable() ? 'available' : 'not-available';
+                    ?>
 
                         <tr>
                             <td><img src="data/images/books/<?= $book->getCoverImg()->getFilePath() ?>" alt="<?= htmlspecialchars($book->getTitle()) ?>"></td>
@@ -58,18 +58,18 @@ ob_start();
                             <td><?= htmlspecialchars($book->getDescription()) ?></td>
                             <td>
                                 <div class="available-tag <?= $availableClass ?>">
-                                    <?= $book->isAvailable() ? 'disponible' : 'non dispo.' ?>
+                                <?= $book->isAvailable() ? 'disponible' : 'non dispo.' ?>
                                 </div>
                             </td>
                             <td>
                                 <div class="table-actions">
                                     <a href="index.php?route=edit-book&id=<?= $book->getId()?>" class="books-card-link">Editer</a>
-                                    <a href="index.php?route=delete-book&id=<?= $book->getId() ?>" class="books-card-link important" onclick="confirm(<?= Book::DELETE_CONFIRM ?>)">Supprimer</a>
+                                    <a href="index.php?route=delete-book&id=<?= $book->getId() ?>" class="books-card-link important" onclick="confirm(<?= \App\Entity\Book::DELETE_CONFIRM ?>)">Supprimer</a>
                                 </div>
                             </td>
                         </tr>
                         <?php
-                    }
+                }
                 ?>
                 </tbody>
             </table>

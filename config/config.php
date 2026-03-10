@@ -6,7 +6,7 @@
     const DB_USER = 'root';
     const DB_PWD = '';
 
-    const VIEW_PATH = 'src/view';
+    const VIEW_PATH = 'src/View';
     const DATA_IMAGES_PATH = 'data/images/';
     const DATA_BOOKS_IMAGES_PATH = DATA_IMAGES_PATH . 'books/';
     const DATA_USERS_IMAGES_PATH = DATA_IMAGES_PATH . 'users/';

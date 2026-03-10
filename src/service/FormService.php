@@ -1,32 +1,45 @@
 <?php
-abstract class FormService {
 
-    public static function checkUserName(string $userName): bool {
+namespace App\Service;
+
+use App\Manager\AuthorManager;
+
+abstract class FormService
+{
+    public static function checkUserName(string $userName): bool
+    {
         return preg_match(CONSTRAINT_USERNAME_REGEX, $userName);
     }
-    public static function checkUserEmail(string $userEmail): bool {
+    public static function checkUserEmail(string $userEmail): bool
+    {
         return filter_var($userEmail, FILTER_VALIDATE_EMAIL);
     }
-    public static function checkUserPassword(string $userPassword): bool {
+    public static function checkUserPassword(string $userPassword): bool
+    {
         return preg_match(CONSTRAINT_PASSWORD_REGEX, $userPassword);
     }
-    public static function checkBookTitle(string $title): bool {
+    public static function checkBookTitle(string $title): bool
+    {
         return preg_match(CONSTRAINT_BOOK_TITLE_REGEX, $title);
     }
-    public static function checkAuthor(string $authorId): bool {
+    public static function checkAuthor(string $authorId): bool
+    {
         if (!filter_var($authorId, FILTER_VALIDATE_INT)) {
             return false;
         }
         $authorManager = new AuthorManager();
         return $authorManager->findById($authorId) !== null;
     }
-    public static function checkBookDescription(string $description): bool {
+    public static function checkBookDescription(string $description): bool
+    {
         return preg_match(CONSTRAINT_BOOK_DESCRIPTION_REGEX, $description);
     }
-    public static function checkBookAvailability(string $available): bool {
+    public static function checkBookAvailability(string $available): bool
+    {
         return in_array($available, ['0', '1'], true);
     }
-    public static function checkCoverImage(array $coverImgFile): bool {
+    public static function checkCoverImage(array $coverImgFile): bool
+    {
         if ($coverImgFile['error'] === UPLOAD_ERR_NO_FILE) {
             // No file uploaded, which is acceptable
             return true;
@@ -47,7 +60,8 @@ abstract class FormService {
         }
         return true;
     }
-    public static function checkUserSignUpData(array $UserData): bool {
+    public static function checkUserSignUpData(array $UserData): bool
+    {
         $isValid = true;
         if (!preg_match(CONSTRAINT_USERNAME_REGEX, $UserData['username'])) {
             FlashService::addMessage('error', CONSTRAINT_USERNAME_DESCRIPTION, 'raw');
@@ -64,7 +78,8 @@ abstract class FormService {
         return $isValid;
     }
 
-    public static function checkBookData(array $bookData): bool {
+    public static function checkBookData(array $bookData): bool
+    {
         $isValid = true;
         if (!self::checkBookTitle($bookData['title'])) {
             FlashService::addMessage('error', CONSTRAINT_BOOK_TITLE_DESCRIPTION, 'raw');
@@ -88,7 +103,8 @@ abstract class FormService {
         return $isValid;
     }
 
-    public static function checkNewMessageData(string $messageContent): bool {
+    public static function checkNewMessageData(string $messageContent): bool
+    {
         $isValid = true;
         if (!preg_match(CONSTRAINT_NEW_MESSAGE_REGEX, $messageContent)) {
             FlashService::addMessage('error', CONSTRAINT_NEW_MESSAGE_DESCRIPTION, 'raw');

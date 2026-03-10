@@ -6,13 +6,13 @@ ob_start();
 <section id="section-messagerie" class="dark-section flex-row">
     <section id="messagerie" class="light-section flex-column">
         <h2>Messagerie</h2>
-        <?php 
+        <?php
         if (!empty($conversations)) {
             foreach ($conversations as $conversation) {
                 $cardSectionClass = $recipient->getId() === $conversation['user']->getId() ? 'white-section' : 'dark-section';
                 $convoRecipient = $conversation['user'];
-                $convoLastMessage = $conversation['last_message'];  
-                require 'convo-card.php';
+                $convoLastMessage = $conversation['last_message'];
+                require VIEW_PATH . '/convo-card.php';
             }
         } else { ?>
             <p>Aucune conversation disponible.</p>
@@ -26,7 +26,7 @@ ob_start();
             </div>
             <div id="messages" class="flex-column">
                 <?php foreach ($recipientMessages as $recipientMessage) {
-                    $isMsgFromCurrentUser = $recipientMessage->getSenderId() === UserService::getCurrentUser()->getId();
+                    $isMsgFromCurrentUser = $recipientMessage->getSenderId() === \App\Service\UserService::getCurrentUser()->getId();
                     $msgStyleClass = $isMsgFromCurrentUser ? 'msg-card-sent' : 'msg-card-received';
                     $msgPositionClass = $isMsgFromCurrentUser ? 'align-self-end' : 'align-self-start';
                     /** @var Message $recipientMessage */ ?>

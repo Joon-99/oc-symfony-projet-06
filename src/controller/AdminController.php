@@ -1,4 +1,7 @@
 <?php
 
-class AdminController {
+namespace App\Controller;
+
+class AdminController
+{
 }

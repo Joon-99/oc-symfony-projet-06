@@ -1,6 +1,11 @@
 <?php
-abstract class Form {
-    public static function renderForm(string $title, array $elems, string $action, string $submitValue): string {
+
+namespace App\View;
+
+abstract class Form
+{
+    public static function renderForm(string $title, array $elems, string $action, string $submitValue): string
+    {
         $form = '<h1>' . $title . '</h1>';
         $form .= '<form method="POST" action=' . $action . '>';
         foreach ($elems as $elem) {
@@ -16,5 +21,4 @@ abstract class Form {
         $form .= '</form>';
         return $form;
     }
-
 }

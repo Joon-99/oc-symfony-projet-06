@@ -1,4 +1,8 @@
 <?php
+namespace App\Entity;
+
+use App\Entity\BaseEntity;
+
 class Author extends BaseEntity
 {
     /**

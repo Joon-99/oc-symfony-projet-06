@@ -1,4 +1,9 @@
 <?php
+
+namespace App\Manager;
+
+use App\Entity\Author;
+
 class AuthorManager
 {
     public function findById(int $id): ?Author
@@ -35,5 +40,4 @@ class AuthorManager
         }
         return null;
     }
-
 }

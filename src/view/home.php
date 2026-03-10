@@ -4,7 +4,7 @@
 ?>
 <section id="hero" class="dark-section">
     <div id="hero-description">
-        <h1>Rejoignez nos lecteurs passionnés<h1>
+        <h1>Rejoignez nos lecteurs passionnés</h1>
         <p>Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. 
             Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres. </p>
         <button class="green-cta-btn">
@@ -21,20 +21,20 @@
     <div class="book-list">
         <?php
             //TODO check le probleme d'alignement du paragraphe des valeurs
-            $bookManager = new BookManager();
-            $authorManager = new AuthorManager();
-            $userManager = new UserManager();
-            $fileManager = new FileManager();
+            $bookManager = new \App\Manager\BookManager();
+            $authorManager = new \App\Manager\AuthorManager();
+            $userManager = new \App\Manager\UserManager();
+            $fileManager = new \App\Manager\FileManager();
             $books = $bookManager->findAll();
 
-            foreach ($books as $book) {
-                $title = $book->getTitle();
-                $author = $authorManager->findById($book->getAuthorId())->getFullName();
-                $owner = $userManager->findById($book->getOwnerId())->getUsername();
-                $img = $fileManager->findById($book->getCoverImgId())->getFilePath();
-                $id = $book->getId();
-                require 'book-card.php';
-            }
+        foreach ($books as $book) {
+            $title = $book->getTitle();
+            $author = $authorManager->findById($book->getAuthorId())->getFullName();
+            $owner = $userManager->findById($book->getOwnerId())->getUsername();
+            $img = $fileManager->findById($book->getCoverImgId())->getFilePath();
+            $id = $book->getId();
+            require VIEW_PATH . '/book-card.php';
+        }
         ?>
     </div>
     <button class="green-cta-btn"><a href="index.php?route=books">Voir tous les livres</a></button>
@@ -53,7 +53,7 @@
         foreach ($steps as $step) {
             echo '<div class="step-card">' . $step . '</div>';
         }
-    ?>
+        ?>
     </div>
     <button class="transparent-cta-btn">Voir tous les livres</button>
 </section>

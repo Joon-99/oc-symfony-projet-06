@@ -1,4 +1,8 @@
 <?php
+namespace App\Entity;
+
+use DateTime;
+
 abstract class BaseEntity
 {
     private int $id;

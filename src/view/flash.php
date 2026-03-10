@@ -19,4 +19,4 @@ foreach ($flashMessages as $flashMessage) {
     $message = $messagePrefixes[$flashMessage['type']] . $flashMessage['msg'];
     echo '<div class="flash-message ' . $flashMessage['type'] . '">' . $faIcon . "<p>$message</p>" . '</div>';
 }
-FlashService::clearMessages();
+\App\Service\FlashService::clearMessages();

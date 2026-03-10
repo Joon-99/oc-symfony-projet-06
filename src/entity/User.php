@@ -1,4 +1,12 @@
 <?php
+
+namespace App\Entity;
+
+use App\Entity\BaseEntity;
+use App\Entity\File;
+use DateTime;
+use DateInterval;
+
 class User extends BaseEntity
 {
     /**
@@ -7,8 +15,8 @@ class User extends BaseEntity
     private string $username;
     private string $passwordHash;
     private string $email;
-    private ?int $profileImgId; // References a File
-    private ?File $profileImg; // References a File entity
+    private ?int $profileImgId;
+    private ?File $profileImg;
 
     public function getUsername(): string
     {
@@ -57,5 +65,4 @@ class User extends BaseEntity
         $accountAge = $now->diff($this->getCreatedAt());
         return $accountAge;
     }
-
 }

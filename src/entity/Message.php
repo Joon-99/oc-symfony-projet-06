@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Entity;
+
 class Message extends BaseEntity
 {
     private int $senderId; // References a User

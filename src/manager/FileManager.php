@@ -1,4 +1,9 @@
 <?php
+
+namespace App\Manager;
+
+use App\Entity\File;
+
 class FileManager
 {
     public function findById(?int $id): ?File
@@ -51,5 +56,4 @@ class FileManager
         $insertedId = DBManager::getLastInsertId();
         return $this->findById($insertedId);
     }
-
 }

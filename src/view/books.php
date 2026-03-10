@@ -12,21 +12,21 @@
     </div>
     <div class="book-list">
         <?php
-            $authorManager = new AuthorManager();
-            $userManager = new UserManager();
-            $fileManager = new FileManager();
+            $authorManager = new \App\Manager\AuthorManager();
+            $userManager = new \App\Manager\UserManager();
+            $fileManager = new \App\Manager\FileManager();
 
-            if (!$books) {
-                $books = [];
-            }
-            foreach ($books as $book) {
-                $title = $book->getTitle();
-                $author = $authorManager->findById($book->getAuthorId())->getFullName();
-                $owner = $userManager->findById($book->getOwnerId())->getUsername();
-                $img = $fileManager->findById($book->getCoverImgId())->getFilePath();
-                $id = $book->getId();
-                require 'book-card.php';
-            }
+        if (!$books) {
+            $books = [];
+        }
+        foreach ($books as $book) {
+            $title = $book->getTitle();
+            $author = $authorManager->findById($book->getAuthorId())->getFullName();
+            $owner = $userManager->findById($book->getOwnerId())->getUsername();
+            $img = $fileManager->findById($book->getCoverImgId())->getFilePath();
+            $id = $book->getId();
+            require VIEW_PATH . '/book-card.php';
+        }
         ?>
     </div>
 </section>

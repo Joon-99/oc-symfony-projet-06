@@ -23,7 +23,7 @@ ob_start();
                     <label for="author" class="edit-book-input-label">Auteur</label>
                     <select id="author" name="author" class="edit-book-input-field">
                         <?php $currentAuthorId = $book->getAuthor() ? $book->getAuthor()->getId() : ($book->getAuthorId() ?? null); ?>
-                        <?php foreach ($authors as $author): ?>
+                        <?php foreach ($authors as $author) : ?>
                             <option value="<?= $author->getId() ?>" <?= $author->getId() === $currentAuthorId ? 'selected' : '' ?>>
                                 <?= htmlspecialchars($author->getFullName()) ?>
                             </option>

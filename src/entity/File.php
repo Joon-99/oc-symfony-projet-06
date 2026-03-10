@@ -1,9 +1,14 @@
 <?php
+
+namespace App\Entity;
+
+use App\Entity\BaseEntity;
+
 class File extends BaseEntity
 {
     /**
      * Represents a file uploaded by a user.
-     * Used for: 
+     * Used for:
      * - user profile images
      * - book covers
      */

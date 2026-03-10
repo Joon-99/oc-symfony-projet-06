@@ -6,7 +6,8 @@ ob_start();
     <div class="left-split light-section">
         <div class="left-split-content">
         <?php
-            echo Form::renderForm(
+            require_once VIEW_PATH . '/form.php';
+            echo \App\View\Form::renderForm(
                 'Inscription',
                 [
                     ['type' => 'text', 'name' => 'username', 'label' => 'Pseudo', 'placeholder' => '', 'required' => 'required'],
@@ -17,7 +18,7 @@ ob_start();
                 "index.php?route=sign-up",
                 "S'inscrire",
             );
-        ?>
+            ?>
             <p class="form-cta">Déjà inscrit ? <a href="index.php?route=login">Connectez-vous</a></p>
         </div>
     </div>

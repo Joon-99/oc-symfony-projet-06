@@ -1,6 +1,12 @@
 <?php
 require_once 'config/autoload.php';
 require_once 'config/config.php';
+
+use App\Controller\MainController;
+use App\Service\FlashService;
+use App\Service\RenderService;
+use App\Service\UserService;
+
 FlashService::init();
 
 try {

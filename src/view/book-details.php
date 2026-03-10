@@ -25,7 +25,7 @@ ob_start();
             $userName = $ownerUsername;
             $userImg = $ownerImage;
             $userId = $ownerId;
-            require_once 'user-tag.php';
+            require_once VIEW_PATH . '/user-tag.php';
             ?>
             <a href="#" id="send-message-btn">Envoyer un message</a>
         </div>

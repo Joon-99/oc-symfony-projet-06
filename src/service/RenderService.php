@@ -1,6 +1,11 @@
 <?php
-class RenderService {
-    public static function renderView(string $viewName, array $params): void {
+
+namespace App\Service;
+
+class RenderService
+{
+    public static function renderView(string $viewName, array $params): void
+    {
         $params = array_merge($params, [
             'flashMessages' => FlashService::getMessages(),
         ]);

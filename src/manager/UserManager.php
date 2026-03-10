@@ -1,4 +1,11 @@
 <?php
+
+namespace App\Manager;
+
+use App\Entity\User;
+use App\Manager\DBManager;
+use App\Manager\FileManager;
+
 class UserManager
 {
     public function findById(int $id): ?User

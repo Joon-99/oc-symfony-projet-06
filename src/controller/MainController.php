@@ -1,7 +1,26 @@
 <?php
 
-class MainController {
-    public function homePage(): void {
+namespace App\Controller;
+
+use App\Entity\User;
+use App\Service\FlashService;
+use App\Service\FormService;
+use App\Service\RenderService;
+use App\Service\UserService;
+use App\Service\UtilService;
+use App\Manager\UserManager;
+use App\Manager\BookManager;
+use App\Manager\FileManager;
+use App\Manager\AuthorManager;
+use App\Manager\MessageManager;
+use DateTime;
+use Exception;
+use App\Entity\Book;
+
+class MainController
+{
+    public function homePage(): void
+    {
         $userManager = new UserManager();
         $users = $userManager->findAll();
         $userU = $userManager->findById(1);
@@ -11,7 +30,8 @@ class MainController {
         ]);
     }
 
-    public function booksAvailable(?string $searchText = null): void {
+    public function booksAvailable(?string $searchText = null): void
+    {
         $bookManager = new BookManager();
         if ($searchText) {
             $books = $bookManager->findByText($searchText);
@@ -27,7 +47,8 @@ class MainController {
         ]);
     }
 
-    public function bookDetails(int $bookId): void {
+    public function bookDetails(int $bookId): void
+    {
         $bookManager = new BookManager();
         $fileManager = new FileManager();
         $book = $bookManager->findById($bookId);
@@ -49,7 +70,8 @@ class MainController {
         ]);
     }
 
-    public function signUpPage(): void {
+    public function signUpPage(): void
+    {
         if (isset($_POST['submit'])) {
             $userManager = new UserManager();
             $userLogin = $_POST['username'];
@@ -93,7 +115,8 @@ class MainController {
         RenderService::renderView('sign-up', []);
     }
 
-    public function loginPage(): void {
+    public function loginPage(): void
+    {
         if (isset($_POST['submit'])) {
             $userManager = new UserManager();
             $userEmail = $_POST['email'];
@@ -113,13 +136,15 @@ class MainController {
         RenderService::renderView('login', []);
     }
 
-    public function logout(): void {
+    public function logout(): void
+    {
         unset($_SESSION['loggedIn']);
         unset($_SESSION['currentUserId']);
         header('Location: index.php?route=home');
     }
 
-    public function myProfilePage(): void {
+    public function myProfilePage(): void
+    {
         if (!UserService::userIsLoggedIn()) {
             UtilService::redirect('login');
         }
@@ -132,7 +157,7 @@ class MainController {
         if (isset($_POST['submit'])) {
             $hasUpdates = false;
             $hasErrors = false;
-            
+
             if (!empty($_POST['username']) && $_POST['username'] !== $user->getUsername()) {
                 if (FormService::checkUserName($_POST['username'])) {
                     $user->setUsername($_POST['username']);
@@ -142,7 +167,7 @@ class MainController {
                     $hasErrors = true;
                 }
             }
-            
+
             if (!empty($_POST['email']) && $_POST['email'] !== $user->getEmail()) {
                 if (FormService::checkUserEmail($_POST['email'])) {
                     $existingUser = $userManager->findByEmail($_POST['email']);
@@ -158,7 +183,7 @@ class MainController {
                     $hasErrors = true;
                 }
             }
-            
+
             if (!empty($_POST['password'])) {
                 if (FormService::checkUserPassword($_POST['password'])) {
                     $user->setPasswordHash(password_hash($_POST['password'], PASSWORD_DEFAULT));
@@ -168,7 +193,7 @@ class MainController {
                     $hasErrors = true;
                 }
             }
-            
+
             if ($hasUpdates && !$hasErrors) {
                 try {
                     $userManager->updateUserEntity($user);
@@ -191,16 +216,15 @@ class MainController {
         ]);
     }
 
-    public function deleteBook(User $user, int $bookId): void {
+    public function deleteBook(User $user, int $bookId): void
+    {
         $bookManager = new BookManager();
         $book = $bookManager->findById($bookId);
         if (!$book) {
             FlashService::addMessage('error', "Livre introuvable.");
-        } 
-        else if ($book->getOwner()->getId() !== $user->getId() && !UserService::isAdmin($user)) {
+        } elseif ($book->getOwner()->getId() !== $user->getId() && !UserService::isAdmin($user)) {
             FlashService::addMessage('error', "Vous ne pouvez pas supprimer un livre qui ne vous appartient pas.");
-        }
-        else {
+        } else {
             try {
                 $bookManager->deleteBook($book);
                 FlashService::addMessage('success', "Livre supprimé avec succès !");
@@ -211,7 +235,8 @@ class MainController {
         header('Location: index.php?route=my-profile');
     }
 
-    public function externalProfilePage(int $userId): void {
+    public function externalProfilePage(int $userId): void
+    {
         $userManager = new UserManager();
         $bookManager = new BookManager();
         $user = $userManager->findById($userId);
@@ -229,7 +254,8 @@ class MainController {
         ]);
     }
 
-    public function editBook(User $user, int $bookId): void {
+    public function editBook(User $user, int $bookId): void
+    {
         $bookManager = new BookManager();
         $fileManager = new FileManager();
         $authorManager = new AuthorManager();
@@ -308,7 +334,8 @@ class MainController {
         ]);
     }
 
-    public function messagesPage(User $user, ?int $recipientId): void {
+    public function messagesPage(User $user, ?int $recipientId): void
+    {
         //TODO gérer le nouveau destinataire
         $messageManager = new MessageManager();
         $userManager = new UserManager();
@@ -332,7 +359,8 @@ class MainController {
         ]);
     }
 
-    public function sendMessage(User $user, ?int $recipientId): void {
+    public function sendMessage(User $user, ?int $recipientId): void
+    {
         $userManager = new UserManager();
         $recipient = $userManager->findById($recipientId);
         if (!$recipient) {

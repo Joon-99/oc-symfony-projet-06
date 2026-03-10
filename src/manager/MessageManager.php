@@ -1,4 +1,10 @@
 <?php
+
+namespace App\Manager;
+
+use App\Entity\Message;
+use App\Entity\User;
+
 class MessageManager
 {
     public function findById(int $id): ?Message
@@ -61,7 +67,7 @@ class MessageManager
             $conversations = [];
             foreach ($conversationResults as $conversationResult) {
                 $userManager = new UserManager();
-                $user = $userManager->findById($conversationResult['user_id']); 
+                $user = $userManager->findById($conversationResult['user_id']);
                 $messageManager = new MessageManager();
                 $message = $messageManager->findById($conversationResult['message_id']);
                 $conversations[] = ['user' => $user, 'last_message' => $message];
@@ -74,7 +80,8 @@ class MessageManager
     /**
      * @return Message[]
      */
-    public function findAllBetweenUsers(User $user, ?User $recipient): array {
+    public function findAllBetweenUsers(User $user, ?User $recipient): array
+    {
         $sql = <<<SQL
             SELECT *
             FROM messages
@@ -97,7 +104,8 @@ class MessageManager
         return [];
     }
 
-    public function createNewMessage(int $sender_id, int $receiver_id, string $content): ?Message {
+    public function createNewMessage(int $sender_id, int $receiver_id, string $content): ?Message
+    {
         $sql = <<<SQL
             INSERT INTO messages (sender_id, receiver_id, content)
             VALUES (:sender_id, :receiver_id, :content)
@@ -114,5 +122,4 @@ class MessageManager
         }
         return null;
     }
-
 }
