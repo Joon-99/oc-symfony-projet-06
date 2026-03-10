@@ -20,24 +20,33 @@ ob_start();
     </section> 
     <section id="conversation" class="dark-section flex-column">
         <?php if ($recipient !== null) { ?>
-            <div class="flex-row">
-                <img src="<?= $recipient->getProfileImg()->getUserProfilePath(); ?>" alt="Profile Image" width="50" height="50">
+            <div id="recipient-info" class="flex-row">
+                <img src="<?= $recipient->getProfileImg()->getUserProfilePath(); ?>" alt="avatar du destinataire" class="messagerie-avatar messagerie-avatar-large">
                 <p><?= htmlspecialchars($recipient->getUsername()); ?></p>
             </div>
-            <div id="messages">
+            <div id="messages" class="flex-column">
                 <?php foreach ($recipientMessages as $recipientMessage) {
-                    /** @var Message $recipientMessage */
-                    if ($recipientMessage->getSenderId() !== UserService::getCurrentUser()->getId()) { ?>
-                        <img src="<?= $recipient->getProfileImg()->getUserProfilePath(); ?>" alt="Profile Image" width="15" height="15">
-                    <?php } ?>
-                    <p><?= $recipientMessage->getCreatedAt()->format('d.m H:i'); ?></p>
-                    <p><?= htmlspecialchars($recipientMessage->getContent()); ?></p>
+                    $isMsgFromCurrentUser = $recipientMessage->getSenderId() === UserService::getCurrentUser()->getId();
+                    $msgStyleClass = $isMsgFromCurrentUser ? 'msg-card-sent' : 'msg-card-received';
+                    $msgPositionClass = $isMsgFromCurrentUser ? 'align-self-end' : 'align-self-start';
+                    /** @var Message $recipientMessage */ ?>
+                    <div class="flex-column msg-card">
+                        <div class="flex-row msg-card-metadata <?= $msgPositionClass ?>">
+                            <?php if (!$isMsgFromCurrentUser) { ?>
+                                <img src="<?= $recipient->getProfileImg()->getUserProfilePath(); ?>" alt="avatar du destinataire" class="messagerie-avatar messagerie-avatar-small">
+                            <?php } ?>
+                            <p><?= $recipientMessage->getCreatedAt()->format('d.m H:i'); ?></p>
+                        </div>
+                        <div class="flex-row msg-card-content msg-card-basic <?= $msgStyleClass; ?> <?= $msgPositionClass; ?>">
+                            <p><?= htmlspecialchars($recipientMessage->getContent()); ?></p>
+                        </div>
+                    </div>
                 <?php } ?>
             </div>
-            <div id="new-message-section">
-                <form method="POST" action="index.php?route=send-message&recipient_id=<?= $recipient->getId(); ?>">
-                    <textarea id="message_content" name="message_content" placeholder="Écrire un message..." required></textarea>
-                    <button type="submit">Envoyer</button>
+            <div id="new-message-section" class="flex-row">
+                <form class="flex-row" method="POST" action="index.php?route=send-message&recipient_id=<?= $recipient->getId(); ?>">
+                    <input id="message_content" name="message_content" placeholder="Tapez votre message ici" required>
+                    <button class="green-cta-btn" type="submit">Envoyer</button>
                 </form>
             </div>
         <?php } else { ?>

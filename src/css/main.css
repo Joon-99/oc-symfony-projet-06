@@ -1000,7 +1000,7 @@ hr {
 }
 
 #ext-profile-books {
-    width: 1135px;
+    width: 100%;
     height: auto;
     overflow: hidden;
 }
@@ -1128,11 +1128,10 @@ hr {
     color: var(--light-text-color);
 }
 
-/* messagerie*/
+/* MESSAGERIE */
 
 #section-messagerie {
     padding: 0 150px;
-    height: 893px;
 }
 
 #messagerie {
@@ -1146,10 +1145,21 @@ hr {
 }
 
 #conversation {
-    width: 832px;
+    width: 100%;
 }
 
 /* messagerie convo section */
+
+.messagerie-avatar {
+    border-radius: 50%;
+    display: block;
+    object-fit: cover;
+}
+
+.messagerie-avatar-large {
+    width: 50px;
+    height: 50px;
+}
 
 .convo-card {
     gap: 10px;
@@ -1157,25 +1167,121 @@ hr {
     border-radius: 0px;
 }
 
-.convo-card-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: block;
-    object-fit: cover;
+.convo-card-data {
+    width: 100%;
+    justify-content: space-between;
+    padding: 3px;
+}
+
+.convo-card-data p {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--light-text-color);
 }
 
 .convo-summary-txt {
-    font-family: var(--inter-font);
-    font-size: 14px;
-    font-weight: 400;
-}
-
-.convo-card-data {
-    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .convo-card-metadata {
     justify-content: space-between;
     width: 100%;
+}
+
+.convo-card-metadata p {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: var(--default-text-color);
+}
+
+/* messagerie messages section */
+
+#recipient-info {
+    align-items: center;
+    gap: 12px;
+    margin: 44px 35px;
+}
+
+#recipient-info p {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--default-text-color);
+}
+
+#new-message-section form{
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 50px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#new-message-section button {
+    height: 50px;
+    width: 130px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#message_content {
+    width: 600px;
+    border: var(--search-bar-decoration) 1px solid;
+    border-radius: 6px;
+    height: 50px;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 16px 42px;
+}
+
+.messagerie-avatar-small {
+    width: 25px;
+    height: 25px;
+}
+
+.msg-card {
+    gap: 5px;
+}
+
+.msg-card-metadata {
+    align-items: center;
+    gap: 4px;
+}
+
+.msg-card-metadata p {
+    color: var(--light-text-color);
+    font-size: 12px;
+}
+
+.msg-card-basic {
+    padding: 10px 18px;
+    border-radius: 3px;
+}
+
+.msg-card-basic p {
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.msg-card-sent {
+    background-color: var(--light-blue-background);
+}
+
+.msg-card-received {
+    background-color: white;
+}
+
+.align-self-end {
+    align-self: flex-end;
+}
+
+.align-self-start {
+    align-self: flex-start;
+}
+
+#messages {
+    margin-left: 50px;
+    gap: 25px;
 }
