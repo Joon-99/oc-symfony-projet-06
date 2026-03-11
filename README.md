@@ -9,7 +9,7 @@ A book-exchange web application built with PHP (MVC, no framework) and MySQL.
 ### Step 1 — Clone the project
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Joon-99/oc-symfony-projet-06.git
 ```
 
 ### Step 2 — Run composer
