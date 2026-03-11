@@ -2,12 +2,9 @@
 /** @var string $userName */
 ?>
 <img class="user-card-img" src="data/images/users/<?= $imgProfilePath ?>">
-<?php
-$visibilityLink = $externalAccount ? 'hidden' : 'visible';
-$visibilityClass = $externalAccount ? 'user-card-link-disabled' : 'user-card-link';
-$actionLink = $externalAccount ? '#' : 'index.php?route=edit-profile-img';
-?>
-<a href="<?= $actionLink ?>" id="modif-link" class="<?= $visibilityClass ?>">modifier</a>
+<?php if (!$externalAccount): ?>
+    <label for="profile-img" id="modif-link">modifier</label>
+<?php endif; ?>
 <hr class="user-card-hr">
 <h2><?= htmlspecialchars($userName) ?> </h2>
 <p class="seniority-text">

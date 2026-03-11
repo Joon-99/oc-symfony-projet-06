@@ -14,8 +14,9 @@ ob_start();
             ?>
         </div>
         <div class="modif-user-card white-section">
-            <form id="modif-user-form" method="POST" action="index.php?route=my-profile">
+            <form id="modif-user-form" method="POST" action="index.php?route=my-profile" enctype="multipart/form-data">
                 <h2>Vos informations personnelles</h2>
+                <input type="file" id="profile-img" name="profile-img" accept="image/*" class="file-hidden-input">
                 <div class="form-field">
                     <label for="email">Adresse email</label>
                     <input type="email" id="email" name="email" value="<?= htmlspecialchars($userEmail) ?>">

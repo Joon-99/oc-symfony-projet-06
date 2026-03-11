@@ -159,6 +159,36 @@ class MainController
         if (isset($_POST['submit'])) {
             $hasUpdates = false;
             $hasErrors = false;
+            $fileManager = new FileManager();
+
+            $profileImgFile = $_FILES['profile-img'] ?? null;
+            if ($profileImgFile && $profileImgFile['error'] !== UPLOAD_ERR_NO_FILE) {
+                if (FormService::checkCoverImage($profileImgFile)) {
+                    $slug = strtolower(trim((string) preg_replace('/[^A-Za-z0-9-]+/', '-', $user->getUsername()), '-'));
+                    $extension = pathinfo($profileImgFile['name'], PATHINFO_EXTENSION) ?: 'jpg';
+                    $newFile = $fileManager->createFileFromData([
+                        'title' => $user->getUsername() . ' - Profile',
+                        'mime_type' => $profileImgFile['type'],
+                        'file_path' => $slug . '-' . uniqid() . '.' . $extension,
+                    ]);
+                    if ($newFile) {
+                        $uploadPath = DATA_USERS_IMAGES_PATH . $newFile->getFilePath();
+                        if (move_uploaded_file($profileImgFile['tmp_name'], $uploadPath)) {
+                            $user->setProfileImg($newFile);
+                            $user->setProfileImgId($newFile->getId());
+                            $hasUpdates = true;
+                        } else {
+                            FlashService::addMessage('error', "Erreur lors de l'enregistrement de l'image de profil.");
+                            $hasErrors = true;
+                        }
+                    } else {
+                        FlashService::addMessage('error', "Erreur lors de la création du fichier image du profil.");
+                        $hasErrors = true;
+                    }
+                } else {
+                    $hasErrors = true;
+                }
+            }
 
             if (!empty($_POST['username']) && $_POST['username'] !== $user->getUsername()) {
                 if (FormService::checkUserName($_POST['username'])) {
