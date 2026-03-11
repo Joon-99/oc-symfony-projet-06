@@ -27,7 +27,7 @@ ob_start();
             $userId = $ownerId;
             require_once VIEW_PATH . '/user-tag.php';
             ?>
-            <a href="#" id="send-message-btn">Envoyer un message</a>
+            <a href="index.php?route=messages&recipient_id=<?= $userId ?>" id="send-message-btn">Envoyer un message</a>
         </div>
     </div>
 </section>

@@ -276,6 +276,7 @@ class MainController
             throw new Exception("Pas de profil trouvé pour cet utilisateur.");
         }
         RenderService::renderView('external-profile', [
+            'userId' => $user->getId(),
             'userName' => $user->getUsername(),
             'accountAge' => $user->getAccountAge()->format('%y ans'),
             'nbBooks' => $bookManager->getNbBooksFromUser($user->getId()),
@@ -370,7 +371,6 @@ class MainController
 
     public function messagesPage(User $user, ?int $recipientId): void
     {
-        //TODO gérer le nouveau destinataire
         $messageManager = new MessageManager();
         $userManager = new UserManager();
         $recipient = null;
@@ -380,10 +380,23 @@ class MainController
                 FlashService::addMessage('error', "Destinataire introuvable.");
                 UtilService::redirect('home');
             }
+            if ($recipient->getId() === $user->getId()) {
+                FlashService::addMessage('error', "Vous ne pouvez pas envoyer de message à vous-même.");
+                UtilService::redirect('home');
+            }
         }
         $conversations = $messageManager->findAllConvosByUserId($user->getId()) ?? [];
+        // Si pas de recipient, on prend la première conversation.
         if ($recipient === null) {
             $recipient = $conversations[0]['user'] ?? null;
+        }
+        // Si recipient défini mais pas encore dans les conversations, on ajoute sa conversation
+        $recipientInConversations = $recipient && array_filter(
+            $conversations,
+            fn($c) => $c['user']->getId() === $recipient->getId()
+        );
+        if ($recipient && !$recipientInConversations) {
+            $conversations[] = ['user' => $recipient, 'last_message' => null];
         }
         $recipientMessages = $messageManager->findAllBetweenUsers($user, $recipient);
         RenderService::renderView('messages', [

@@ -12,8 +12,12 @@ href="index.php?route=messages&recipient_id=<?= $convoRecipient->getId(); ?>">
         <div class="flex-column convo-card-data">
             <div class="flex-row convo-card-metadata">
                 <p><?= htmlspecialchars($convoRecipient->getUsername()); ?></p>
-                <p><?= htmlspecialchars($convoLastMessage->getCreatedAt()->format('H:i')); ?></p>
+                <?php if ($convoLastMessage): ?>
+                    <p><?= htmlspecialchars($convoLastMessage->getCreatedAt()->format('H:i')); ?></p>
+                <?php endif; ?>
             </div>
-            <p class="convo-summary-txt"><?= htmlspecialchars($convoLastMessage->getAbbreviatedContent()); ?></p>
+            <p class="convo-summary-txt"><?= $convoLastMessage
+                ? htmlspecialchars($convoLastMessage->getAbbreviatedContent())
+                : 'Nouvelle conversation'; ?></p>
         </div>
 </a>

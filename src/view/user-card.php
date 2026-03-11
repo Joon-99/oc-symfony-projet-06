@@ -24,5 +24,6 @@
 </div>
 <?php
 if ($externalAccount) {
-    echo '<a id="send-message-grey-btn" class="grey-cta-btn" href="#">Écrire un message</a>';
+    echo '<a id="send-message-grey-btn" class="grey-cta-btn"
+         href="index.php?route=messages&recipient_id=' . $userId . '">Écrire un message</a>';
 }

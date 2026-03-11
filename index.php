@@ -23,7 +23,7 @@ try {
             $controller->booksAvailable();
             break;
         case 'search-book':
-            $searchText = isset($_GET['search-book']) ? $_GET['search-book'] : null;
+            $searchText = isset($_GET['s']) ? $_GET['s'] : null;
             $controller = new MainController();
             $controller->booksAvailable($searchText);
             break;

@@ -7,7 +7,7 @@ abstract class Form
     public static function renderForm(string $title, array $elems, string $action, string $submitValue): string
     {
         $form = '<h1>' . $title . '</h1>';
-        $form .= '<form method="POST" action=' . $action . '>';
+        $form .= '<form method="POST" action="' . $action . '">';
         foreach ($elems as $elem) {
             $form .= '<div class="form-element">';
             if ($elem['type'] !== 'submit') {

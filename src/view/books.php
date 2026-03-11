@@ -5,9 +5,9 @@
 <section id="books-available" class="light-section">
     <div class="search">
         <h1>Nos livres à l'échange</h1>
-        <form action="index.php?route=books" method="GET">
+        <form action="index.php" method="GET">
             <input type="hidden" name="route" value="search-book">
-            <input type="search" placeholder="Rechercher un livre" id="search-book" name="search-book">
+            <input type="search" placeholder="Rechercher un livre" id="search-book" name="s">
         </form>
     </div>
     <div class="book-list">
