@@ -7,12 +7,12 @@
         <h1>Rejoignez nos lecteurs passionnés</h1>
         <p>Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. 
             Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres. </p>
-        <button class="green-cta-btn">
+        <a id="discover-link" class="green-cta-btn" href="index.php?route=books">
             Découvrir
-        </button>
+        </a>
     </div>
     <div id="hero-img">
-        <img src="data/images/librarian.jpg">
+        <img src="data/images/librarian.jpg" alt="photo d'un libraire, assis, lisant au milieu de montagnes de livres">
         <p>Hamza</p>
     </div>
 </section>
@@ -37,7 +37,7 @@
         }
         ?>
     </div>
-    <a id="view-all-books-link" class="green-cta-btn" href="index.php?route=books">Voir tous les livres</a>
+    <a class="green-cta-btn view-all-books-link" href="index.php?route=books">Voir tous les livres</a>
 </section>
 <section id="steps" class="dark-section">
     <h2>Comment ça marche ?</h2>
@@ -55,7 +55,7 @@
         }
         ?>
     </div>
-    <button class="transparent-cta-btn">Voir tous les livres</button>
+    <a class="view-all-books-link transparent-cta-btn" href="index.php?route=books">Voir tous les livres</a>
 </section>
 <div id="banner">
 </div>
@@ -72,7 +72,8 @@
         patiemment sur les étagères.</p>
     <div id="signature">
         <p id="signature-text">L'équipe Tom Troc</p>
-        <img id="signature-img" src="data/images/signature-heart.svg">
+        <img id="signature-img" src="data/images/signature-heart.svg"
+        alt="image d'un coeur dessiné à main levée, utilisé comme signature">
     </div>
 </section>
 

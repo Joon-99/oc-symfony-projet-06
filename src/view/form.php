@@ -14,12 +14,13 @@ abstract class Form
                 $form .= '<label for="' . $elem['name'] . '">' . $elem['label'] . '</label>';
                 $form .= '<input type="' . $elem['type']
                 . '" name="' . $elem['name']
-                . '" placeholder="' . $elem['placeholder'] . '"'
+                . '" id="' . $elem['name']
+                . '" placeholder="' . $elem['placeholder'] . '" '
                 . $elem['required'] . '>';
             } else {
                 $form .= '<input class="green-cta-btn green-cta-form-btn" type="' . $elem['type']
-                . '" name="' . $elem['name'] . '"'
-                . "value=\"$submitValue\"" . $elem['required'] . '>';
+                . '" name="' . $elem['name'] . '" '
+                . "value=\"$submitValue\" " . '>';
             }
             $form .= '</div>';
         }

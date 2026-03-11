@@ -1,10 +1,10 @@
 <?php
 /** @var string $userName */
 ?>
-<img class="user-card-img" src="data/images/users/<?= $imgProfilePath ?>">
-<?php if (!$externalAccount): ?>
+<img class="user-card-img" src="data/images/users/<?= $imgProfilePath ?>" alt="photo de profil de l'utilisateur">
+<?php if (!$externalAccount) { ?>
     <label for="profile-img" id="modif-link">modifier</label>
-<?php endif; ?>
+<?php } ?>
 <hr class="user-card-hr">
 <h2><?= htmlspecialchars($userName) ?> </h2>
 <p class="seniority-text">

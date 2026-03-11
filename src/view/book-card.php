@@ -1,7 +1,7 @@
 <a href="index.php?route=book-details&id=<?= $id ?>" class="book-card-link">
     <div class="book-card">
         <div class="book-card-img">
-            <img src="data/images/books/<?= $img ?>">
+            <img src="data/images/books/<?= $img ?>" alt="Couverture du livre">
         </div>
         <div class="book-card-description">
             <p class="book-card-title"><?= htmlspecialchars($title) ?></p>

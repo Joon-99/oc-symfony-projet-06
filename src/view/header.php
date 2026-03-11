@@ -12,10 +12,13 @@
 </div>
 <div id="user-sections">
     <div id="mailbox">
-        <img src="data/images/messagerie.svg">
+        <img src="data/images/messagerie.svg" alt="icône de messagerie">
         <a href="index.php?route=messages">Messagerie</a>
     </div>
-    <a href="index.php?route=my-profile">Mon compte</a>
+    <div>
+        <img src="data/images/mon-compte.svg" alt="icône mon compte">
+        <a href="index.php?route=my-profile">Mon compte</a>
+    </div>
     <?php
     if (\App\Service\UserService::userIsLoggedIn()) {
         echo '<a href="index.php?route=logout">Déconnexion</a>';

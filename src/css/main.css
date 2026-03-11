@@ -203,7 +203,7 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 }
 
 #hero-description h1 {
@@ -306,7 +306,14 @@ h2 {
     color: var(--light-text-color)
 }
 
-#view-all-books-link {
+#discover-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 63px;
+}
+
+.view-all-books-link {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -518,11 +525,19 @@ footer {
     background-color: white;
     border: 1px solid var(--search-bar-decoration);
     border-radius: 10px;
+    padding: 10px 12px;
+}
+
+#search-book {
+    padding-left: 38px;
+    background-image: url("../../data/images/loupe.svg");
+    background-repeat: no-repeat;
+    background-position: 12px center;
+    background-size: 16px 16px;
 }
 
 #search-book::placeholder {
-    padding: 5px;
-    color: var(--search-bar-decoration);
+    color: var(--light-text-color);
 }
 
 /* book details page */

@@ -25,7 +25,7 @@ ob_start();
         </div>
     </div>
     <div id="books-img" class="right-split">
-        <img src="data/images/bookwall.jfif">
+        <img src="data/images/bookwall.jfif" alt="photo d'un mur de livres">
     </div>
 </section>
 <?php

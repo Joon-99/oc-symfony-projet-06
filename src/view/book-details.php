@@ -12,7 +12,7 @@ ob_start();
     </div>
     <div id="details" class="light-section">
         <div id="book-img">
-            <img src="data/images/books/<?= $img ?>">
+            <img src="data/images/books/<?= $img ?>" alt="Couverture du livre en demi-page">
         </div>
         <div id="book-description">
             <h1 id="book-title"><?= htmlspecialchars($title) ?></h1>
