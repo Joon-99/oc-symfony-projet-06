@@ -768,6 +768,14 @@ hr {
     font-weight: 400;
 }
 
+.user-card-link {
+    visibility: visible;
+}
+
+.user-card-link-disabled {
+    visibility: hidden;
+}
+
 .user-card-img {
     width: 135px;
     height: 135px;
@@ -795,6 +803,10 @@ hr {
     font-family: var(--inter-font);
     color: var(--light-text-color);
     margin-bottom: 21px;
+}
+
+.library-text svg {
+    vertical-align: middle;
 }
 
 #profile-info-section .user-card,
