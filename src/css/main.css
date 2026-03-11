@@ -306,8 +306,14 @@ h2 {
     color: var(--light-text-color)
 }
 
-#last-books button {
+#view-all-books-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 38px 22px;
     margin-bottom: 64px;
+    height: 63px;
+    width: 218px;
 }
 
 /* steps section */

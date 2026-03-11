@@ -4,9 +4,9 @@
             <img src="data/images/books/<?= $img ?>">
         </div>
         <div class="book-card-description">
-            <p class="book-card-title"><?= $title ?></p>
-            <p class="book-card-author"><?= $author ?></p>
-            <p class="book-card-owner">Vendu par : <?= $owner ?></p>
+            <p class="book-card-title"><?= htmlspecialchars($title) ?></p>
+            <p class="book-card-author"><?= htmlspecialchars($author) ?></p>
+            <p class="book-card-owner">Vendu par : <?= htmlspecialchars($owner) ?></p>
         </div>
     </div>
 </a>

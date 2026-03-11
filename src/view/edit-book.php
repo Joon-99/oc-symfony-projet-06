@@ -38,10 +38,9 @@ ob_start();
                 </div>
                 <div class="form-field">
                     <label for="description" class="edit-book-input-label">Description</label>
+                    <?php $description = htmlspecialchars($book->getDescription()); ?>
                     <textarea id="description" name="description"
-                    class="edit-book-input-field edit-book-input-field--tall" required>
-                        <?= htmlspecialchars($book->getDescription()) ?>
-                    </textarea>
+                    class="edit-book-input-field edit-book-input-field--tall" required><?= $description ?></textarea>
                 </div>
                 <div class="form-field">
                     <label for="available" class="edit-book-input-label">Disponibilité</label>

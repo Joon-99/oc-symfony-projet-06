@@ -71,7 +71,7 @@ ob_start();
                                     class="books-card-link">Editer</a>
                                     <a href="index.php?route=delete-book&id=<?= $book->getId() ?>" 
                                     class="books-card-link important"
-                                    onclick="return confirm(<?= \App\Entity\Book::DELETE_CONFIRM ?>)">Supprimer</a>
+                                    onclick="return confirm('<?= \App\Entity\Book::DELETE_CONFIRM ?>')">Supprimer</a>
                                 </div>
                             </td>
                         </tr>

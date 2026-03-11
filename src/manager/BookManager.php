@@ -54,6 +54,29 @@ class BookManager
     /**
      * @return Book[] | null
      */
+    public function findLastEntries(): ?array
+    {
+        $sql = <<<SQL
+            SELECT *
+            FROM books
+            ORDER BY created_at DESC
+            LIMIT 4
+        SQL;
+        $statement = DBManager::execQuery($sql);
+        $booksResults = $statement->fetchAll();
+        if ($booksResults) {
+            $books = [];
+            foreach ($booksResults as $bookResult) {
+                $books[] = new Book($bookResult);
+            }
+            return $books;
+        }
+        return null;
+    }
+
+    /**
+     * @return Book[] | null
+     */
     public function findAllAvailable(): ?array
     {
         $sql = <<<SQL

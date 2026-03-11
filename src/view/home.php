@@ -25,7 +25,7 @@
             $authorManager = new \App\Manager\AuthorManager();
             $userManager = new \App\Manager\UserManager();
             $fileManager = new \App\Manager\FileManager();
-            $books = $bookManager->findAll();
+            $books = $bookManager->findLastEntries();
 
         foreach ($books as $book) {
             $title = $book->getTitle();
@@ -37,7 +37,7 @@
         }
         ?>
     </div>
-    <button class="green-cta-btn"><a href="index.php?route=books">Voir tous les livres</a></button>
+    <a id="view-all-books-link" class="green-cta-btn" href="index.php?route=books">Voir tous les livres</a>
 </section>
 <section id="steps" class="dark-section">
     <h2>Comment ça marche ?</h2>
