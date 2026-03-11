@@ -111,8 +111,7 @@ class MainController
                 'success',
                 "Vous êtes inscrit avec succès ! Vous pouvez maintenant vous connecter.",
             );
-            header('Location: index.php?route=sign-up');
-            return;
+            UtilService::redirect('sign-up');
         }
         RenderService::renderView('sign-up', []);
     }
@@ -132,8 +131,7 @@ class MainController
             FlashService::addMessage('success', "Vous êtes maintenant connecté en tant que {$user->getUsername()} !");
             $_SESSION['loggedIn'] = true;
             $_SESSION['currentUserId'] = $user->getId();
-            header('Location: index.php?route=home');
-            return;
+            UtilService::redirect('home');
         }
         RenderService::renderView('login', []);
     }
@@ -142,7 +140,7 @@ class MainController
     {
         unset($_SESSION['loggedIn']);
         unset($_SESSION['currentUserId']);
-        header('Location: index.php?route=home');
+        UtilService::redirect('home');
     }
 
     public function myProfilePage(): void
@@ -264,7 +262,7 @@ class MainController
                 FlashService::addMessage('error', "Erreur lors de la suppression du livre : {$e->getMessage()}");
             }
         }
-        header('Location: index.php?route=my-profile');
+        UtilService::redirect('my-profile');
     }
 
     public function externalProfilePage(int $userId): void
