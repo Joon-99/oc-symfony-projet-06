@@ -236,6 +236,14 @@ h2 {
     text-align: right;
 }
 
+#login input {
+    padding-left: 10px;
+}
+
+#sign-in input {
+    padding-left: 10px;
+}
+
 /* last books sections */
 
 #last-books {
